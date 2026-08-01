@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/skkima-logo.png" alt="쓰끼마" width="144">
+<img src="assets/skkima-icon.png" alt="쓰끼마 앱 아이콘" width="128">
 
 # Skkima (쓰끼마)
 
