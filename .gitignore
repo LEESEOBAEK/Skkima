@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local development and build output
+.env
+.env.*
+node_modules/
+target/
+dist/
+.output/
+
+# Local project and workflow data
+.schema-workflow/
+outputs/
+runtime/
+*.log
