@@ -20,7 +20,7 @@
 | 해결 | 프로젝트, 작업 세션, Workflow Run, 산출물과 검증 결과를 연결해 표시 |
 | 대상 환경 | Windows 11 개인 로컬 환경 |
 | 기술 | Tauri 2, Rust, JavaScript, Python Workflow Engine, JSON/JSONL |
-| 공개 버전 | 포트폴리오 스냅샷 0.1.5 |
+| 공개 버전 | 포트폴리오 스냅샷 0.1.6 |
 | 공개 범위 | 검증된 화면·설계·테스트 결과 중심. 실제 운영 데이터는 제외 |
 
 ## 프로젝트 소개
@@ -67,6 +67,7 @@ AI가 작업을 완료했다고 보고하는 것과 실제 산출물이 생성�
 | 실행 연결 | Codex, Claude Code, Antigravity의 설치 상태와 실행 경계를 확인 | 검증 완료 |
 | 실행 추적 | Run ID, 상태, 검증 결과, 다음 행동과 최종 산출물 표시 | 검증 완료 |
 | 결과 검토 | 산출물·근거·검토 상태를 실행 기록과 연결 | 검증 완료 |
+| 리서치 Run | 등록한 출처의 경로·해시·근거 수를 실행 전에 검증 | 검증 완료 |
 | CLI 복구 | 명시적 승인 후 중단하고 aborted 기록과 재시작 경로 보존 | 검증 완료 |
 | 스킬·플러그인 | 로컬 파일과 GitHub 저장소에서 확장 기능을 선택적으로 등록 | 검증 완료 |
 | 브라우저 근거 | 브라우저 페이지를 읽기 전용으로 진단하고 근거를 프로젝트에 기록 | 제한된 검증 |
@@ -111,8 +112,9 @@ AI CLI + Python Workflow Engine
 |---|---|
 | JavaScript 테스트 | 138건 통과 |
 | Rust 테스트 | 91건 통과, 네트워크 의존 테스트 2건 제외 |
+| 리서치 출처·Preflight 테스트 | 통과 |
 | Tauri 릴리스 빌드 | 성공 |
-| Windows NSIS 설치 패키지 | 0.1.5 빌드 성공 |
+| Windows NSIS 설치 패키지 | 0.1.6 빌드 성공 |
 | 주요 수동 흐름 | 프로젝트 선택, 작업 세션, CLI 실행, 복구 흐름 확인 |
 
 테스트 범위와 제한사항은 [검증 문서](docs/verification.md)에서 확인할 수 있다.
@@ -143,6 +145,7 @@ AI CLI + Python Workflow Engine
 - [사용 흐름](docs/product-tour.md)
 - [스킬과 플러그인 관리](docs/skills-and-plugins.md)
 - [검증 원칙과 결과](docs/verification.md)
+- [리서치 Run 신뢰성 개선 사례](docs/research-run-reliability.md)
 - [문제 해결](docs/troubleshooting.md)
 - [릴리스와 공개 범위](docs/release-guide.md)
 
