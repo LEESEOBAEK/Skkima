@@ -3,12 +3,19 @@
 > AI 작업의 요청·Run·검증·산출물·다음 행동을 연결해, 사람이 현재 상태와 근거를 확인할 수 있게 만든 Windows 데스크톱 작업 공간
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/69e1fda5374a5f40ffd1e3e4aa467773a45a6b2c/assets/screenshots/portfolio-workflow-overview.png">
-    <img src="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/69e1fda5374a5f40ffd1e3e4aa467773a45a6b2c/assets/screenshots/portfolio-workflow-overview.png" alt="완료 상태, 검증 결과, 산출물과 다음 행동을 한 화면에서 보여주는 Skkima 작업 세션" width="760">
-  </a>
+  <img src="assets/skkima-logo.png" alt="쓰끼마 로고" width="280">
 </p>
 
 <p align="center"><sub>목적: 흩어진 AI CLI 작업을 단순한 완료 보고가 아니라 추적 가능한 Workflow 기록으로 관리합니다.</sub></p>
+
+```mermaid
+flowchart LR
+    A[Request] --> B[Workflow Run]
+    B --> C{Validation}
+    C -->|Pass| D[Artifacts]
+    C -->|Review needed| E[Next Action]
+    D --> E
+```
 
 ## Problem — 무엇을 해결하려 했나
 
@@ -40,13 +47,16 @@ Skkima는 이 문제를 **요청 → 실행 관계 → 상태 → 검증 → 산
 
 ### Workflow 결과 요약
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/69e1fda5374a5f40ffd1e3e4aa467773a45a6b2c/assets/screenshots/portfolio-workflow-overview.png">
-    <img src="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/69e1fda5374a5f40ffd1e3e4aa467773a45a6b2c/assets/screenshots/portfolio-workflow-overview.png" alt="Skkima Workflow 결과 요약 화면" width="760">
-  </a>
-</p>
+<details>
+<summary><strong>실제 Workflow 결과 화면 보기</strong> — 원본 1168×400 PNG</summary>
 
-<p align="center"><sub>이미지를 클릭하면 원본 크기로 확인할 수 있습니다.</sub></p>
+<br>
+
+<a href="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/69e1fda5374a5f40ffd1e3e4aa467773a45a6b2c/assets/screenshots/portfolio-workflow-overview.png">
+  <img src="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/69e1fda5374a5f40ffd1e3e4aa467773a45a6b2c/assets/screenshots/portfolio-workflow-overview.png" alt="Skkima Workflow 결과 요약 화면">
+</a>
+
+</details>
 
 완료 상태, 검증 통과 여부, 등록 산출물과 다음 행동을 한 화면에서 확인하는 대표 화면입니다. 공개본에서는 개인 경로와 Run·Operation 식별 정보를 노출하지 않습니다.
 
