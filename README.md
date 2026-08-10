@@ -4,6 +4,8 @@
 
 <p align="center">
   <img src="assets/skkima-logo.png" alt="쓰끼마 로고" width="280">
+  &nbsp;&nbsp;
+  <img src="assets/skkima-icon.png" alt="쓰끼마 앱 아이콘" width="88">
 </p>
 
 <p align="center"><sub>목적: 흩어진 AI CLI 작업을 단순한 완료 보고가 아니라 추적 가능한 Workflow 기록으로 관리합니다.</sub></p>
@@ -42,28 +44,38 @@ Skkima는 이 문제를 **요청 → 실행 관계 → 상태 → 검증 → 산
 | 스킬·플러그인 연결 | 로컬 스킬과 GitHub 저장소 기반 확장 기능 | 프로젝트별 도구 구성을 한곳에서 확인 |
 | 리서치 Preflight | 출처 경로·해시·근거 수와 변경 여부 | 근거가 부족하거나 달라진 상태에서 실행되는 것을 방지 |
 
-## Screenshots — 대표 화면
+## Screenshots — 판단과 운영 흐름
 
-### Workflow 결과 요약
+대표 화면만 반복하지 않고, 서로 다른 실무 역량을 보여주는 실제 화면 네 장을 2×2로 구성했습니다. 각 이미지는 원본보다 작게 표시해 글자 선명도를 유지하며, 클릭하면 1630×980 원본으로 열립니다.
 
-[대표 화면 원본(1630×980) 열기](assets/screenshots/portfolio-workflow-session-2x.png)
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="assets/screenshots/portfolio-workflow-running.png"><img src="assets/screenshots/portfolio-workflow-running.png" alt="실행 중인 Workflow의 상태, 검증 대기, 산출물과 다음 행동을 보여주는 화면" width="100%"></a><br>
+      <strong>실행 상태 관리</strong><br>
+      <sub>진행 중·검증 대기·산출물·다음 행동을 분리해 현재 상태를 오해하지 않게 합니다.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="assets/screenshots/portfolio-workflow-history.png"><img src="assets/screenshots/portfolio-workflow-history.png" alt="요청 구조화부터 fulfillment까지 Workflow 이력을 보여주는 화면" width="100%"></a><br>
+      <strong>Workflow 이력 추적</strong><br>
+      <sub>입력 구조화, 관계 선택, 검증, 산출물 등록, fulfillment의 처리 순서를 확인합니다.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="assets/screenshots/portfolio-archive-recovery.png"><img src="assets/screenshots/portfolio-archive-recovery.png" alt="보관된 작업을 복원하거나 삭제할 수 있는 아카이브 화면" width="100%"></a><br>
+      <strong>보관과 복구</strong><br>
+      <sub>종료된 작업을 지우지 않고 보관하며, 필요한 기록은 다시 복원할 수 있습니다.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="assets/screenshots/portfolio-plugin-library.png"><img src="assets/screenshots/portfolio-plugin-library.png" alt="GitHub 저장소와 로컬 확장 기능을 관리하는 플러그인 화면" width="100%"></a><br>
+      <strong>플러그인과 스킬 관리</strong><br>
+      <sub>로컬 파일과 공개 저장소 기반 확장 기능을 구분하고 프로젝트별 설치 상태를 확인합니다.</sub>
+    </td>
+  </tr>
+</table>
 
-완료 상태, 검증 통과 여부, 등록 산출물과 다음 행동을 한 화면에서 확인하는 대표 화면입니다. 이 화면은 사용자가 포트폴리오 공개를 허용한 실제 작업 원본으로, 작업 내용과 로컬 경로 및 실행 식별 정보가 포함되어 있습니다.
-
-### 플러그인과 스킬 관리
-
-<details>
-<summary><strong>플러그인과 스킬 관리 화면 보기</strong> — 원본 PNG</summary>
-
-<br>
-
-<a href="assets/screenshots/plugin-library-clean.png">
-  <img src="assets/screenshots/plugin-library-clean.png" alt="Skkima 플러그인과 스킬 관리 화면">
-</a>
-
-</details>
-
-로컬 파일과 공개 저장소 기반 확장 기능을 구분하고 프로젝트별 설치 상태를 확인합니다.
+위 화면은 사용자가 포트폴리오 공개를 허용한 실제 작업 원본입니다. 작업 내용과 로컬 경로 및 실행 식별 정보가 포함되어 있습니다.
 
 ## Technical Overview — 기술과 구조
 
