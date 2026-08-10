@@ -62,11 +62,16 @@ Skkima는 이 문제를 **요청 → 실행 관계 → 상태 → 검증 → 산
 
 ### 플러그인과 스킬 관리
 
-<p align="center">
-  <a href="assets/screenshots/plugin-library-clean.png">
-    <img src="assets/screenshots/plugin-library-clean.png" alt="Skkima 플러그인과 스킬 관리 화면" width="760">
-  </a>
-</p>
+<details>
+<summary><strong>플러그인과 스킬 관리 화면 보기</strong> — 원본 PNG</summary>
+
+<br>
+
+<a href="assets/screenshots/plugin-library-clean.png">
+  <img src="assets/screenshots/plugin-library-clean.png" alt="Skkima 플러그인과 스킬 관리 화면">
+</a>
+
+</details>
 
 로컬 파일과 공개 저장소 기반 확장 기능을 구분하고 프로젝트별 설치 상태를 확인합니다.
 
