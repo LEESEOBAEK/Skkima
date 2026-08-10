@@ -11,12 +11,12 @@
 <p align="center"><sub>목적: 흩어진 AI CLI 작업을 단순한 완료 보고가 아니라 추적 가능한 Workflow 기록으로 관리합니다.</sub></p>
 
 <p align="center">
-  <a href="assets/screenshots/portfolio-workflow-session-2x.png">
-    <img src="assets/screenshots/portfolio-workflow-session-2x.png" alt="완료 상태, 검증 결과, 산출물과 실행 세부 정보를 함께 보여주는 Skkima 작업 세션" width="820">
+  <a href="assets/screenshots/portfolio-workflow-session-public.png">
+    <img src="assets/screenshots/portfolio-workflow-session-public.png" alt="완료 상태, 검증 결과, 산출물과 실행 세부 정보를 함께 보여주는 Skkima 작업 세션" width="820">
   </a>
 </p>
 
-<p align="center"><sub>완료·검증·산출물·다음 행동과 실행 상세를 함께 보여주는 실제 작업 화면 · 1630×980 원본을 약 2× 픽셀 밀도로 표시 · 클릭하면 원본 크기로 열립니다.</sub></p>
+<p align="center"><sub>완료·검증·산출물·다음 행동과 실행 상세를 함께 보여주는 실제 작업 화면 · 1630×980 공개용 사본을 약 2× 픽셀 밀도로 표시 · 클릭하면 전체 크기로 열립니다.</sub></p>
 
 ## Problem — 무엇을 해결하려 했나
 
@@ -46,36 +46,36 @@ Skkima는 이 문제를 **요청 → 실행 관계 → 상태 → 검증 → 산
 
 ## Screenshots — 판단과 운영 흐름
 
-대표 화면만 반복하지 않고, 서로 다른 실무 역량을 보여주는 실제 화면 네 장을 2×2로 구성했습니다. 각 이미지는 원본보다 작게 표시해 글자 선명도를 유지하며, 클릭하면 1630×980 원본으로 열립니다.
+대표 화면만 반복하지 않고, 서로 다른 실무 역량을 보여주는 실제 화면 네 장을 2×2로 구성했습니다. 각 이미지는 전체 크기보다 작게 표시해 글자 선명도를 유지하며, 클릭하면 1630×980 공개용 사본으로 열립니다.
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a href="assets/screenshots/portfolio-workflow-running.png"><img src="assets/screenshots/portfolio-workflow-running.png" alt="실행 중인 Workflow의 상태, 검증 대기, 산출물과 다음 행동을 보여주는 화면" width="100%"></a><br>
+      <a href="assets/screenshots/portfolio-workflow-running-public.png"><img src="assets/screenshots/portfolio-workflow-running-public.png" alt="실행 중인 Workflow의 상태, 검증 대기, 산출물과 다음 행동을 보여주는 화면" width="100%"></a><br>
       <strong>실행 상태 관리</strong><br>
       <sub>진행 중·검증 대기·산출물·다음 행동을 분리해 현재 상태를 오해하지 않게 합니다.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="assets/screenshots/portfolio-workflow-history.png"><img src="assets/screenshots/portfolio-workflow-history.png" alt="요청 구조화부터 fulfillment까지 Workflow 이력을 보여주는 화면" width="100%"></a><br>
+      <a href="assets/screenshots/portfolio-workflow-history-public.png"><img src="assets/screenshots/portfolio-workflow-history-public.png" alt="요청 구조화부터 fulfillment까지 Workflow 이력을 보여주는 화면" width="100%"></a><br>
       <strong>Workflow 이력 추적</strong><br>
       <sub>입력 구조화, 관계 선택, 검증, 산출물 등록, fulfillment의 처리 순서를 확인합니다.</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="assets/screenshots/portfolio-archive-recovery.png"><img src="assets/screenshots/portfolio-archive-recovery.png" alt="보관된 작업을 복원하거나 삭제할 수 있는 아카이브 화면" width="100%"></a><br>
+      <a href="assets/screenshots/portfolio-archive-recovery-public.png"><img src="assets/screenshots/portfolio-archive-recovery-public.png" alt="보관된 작업을 복원하거나 삭제할 수 있는 아카이브 화면" width="100%"></a><br>
       <strong>보관과 복구</strong><br>
       <sub>종료된 작업을 지우지 않고 보관하며, 필요한 기록은 다시 복원할 수 있습니다.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="assets/screenshots/portfolio-plugin-library.png"><img src="assets/screenshots/portfolio-plugin-library.png" alt="GitHub 저장소와 로컬 확장 기능을 관리하는 플러그인 화면" width="100%"></a><br>
+      <a href="assets/screenshots/portfolio-plugin-library-public.png"><img src="assets/screenshots/portfolio-plugin-library-public.png" alt="GitHub 저장소와 로컬 확장 기능을 관리하는 플러그인 화면" width="100%"></a><br>
       <strong>플러그인과 스킬 관리</strong><br>
       <sub>로컬 파일과 공개 저장소 기반 확장 기능을 구분하고 프로젝트별 설치 상태를 확인합니다.</sub>
     </td>
   </tr>
 </table>
 
-위 화면은 사용자가 포트폴리오 공개를 허용한 실제 작업 원본입니다. 작업 내용과 로컬 경로 및 실행 식별 정보가 포함되어 있습니다.
+위 화면은 실제 작업 캡처의 공개용 사본입니다. Workflow 상태와 문제 해결 맥락은 유지하고, 로컬 절대 경로·실행 식별자·무관한 비공개 작업명만 불투명 마스크로 제거했습니다. 원본 해상도는 유지했습니다.
 
 ## Technical Overview — 기술과 구조
 
@@ -122,7 +122,7 @@ Python Workflow Engine
 - Windows 이외 운영체제, 원격 동기화, 팀 권한 관리는 보장하지 않습니다.
 - 브라우저 근거 기능은 사이트별 로그인과 구조 차이 때문에 제한된 검증 상태입니다.
 - 실제 사용자 적용, 성능 개선 수치, 기업 운영 사례는 확인되지 않아 주장하지 않습니다.
-- 공개 저장소에는 계정·비밀값과 내부 실험 설정을 포함하지 않습니다. 단, 대표 화면에 보이는 작업 내용·로컬 경로·실행 식별 정보는 사용자가 포트폴리오 공개를 명시적으로 허용한 범위입니다.
+- 공개 저장소에는 계정·비밀값과 내부 실험 설정을 포함하지 않습니다. 공개용 화면에서는 로컬 절대 경로·실행 식별자·무관한 비공개 작업명을 마스킹했습니다.
 
 ## Links — 관련 자료
 
