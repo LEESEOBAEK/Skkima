@@ -1,9 +1,9 @@
 <div align="center">
   <img src="assets/skkima-icon-aurora-transparent.png" width="128" alt="Skkima icon" />
   <h1>쓰끼마 (Skkima)</h1>
-  <p><strong>A local research workspace for turning context into traceable work.</strong><br />
-  Structure a request, prepare the right workflow, run an AI CLI, and keep the evidence,<br />
-  outputs, and recovery history connected.</p>
+  <p><strong>A local workspace for turning ambiguous AI-assisted work into traceable workflows.</strong><br />
+  Structure a request, define human approval points, run an AI CLI, and keep context,<br />
+  evidence, outcomes, and recovery history connected.</p>
   <p>
     <img src="https://img.shields.io/badge/version-0.1.7-7564B8" alt="Version 0.1.7" />
     <img src="https://img.shields.io/badge/platform-Windows-4266C6" alt="Windows" />
