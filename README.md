@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/skkima-icon-aurora.png" width="128" alt="Skkima icon" />
+  <img src="assets/skkima-icon-aurora-transparent.png" width="128" alt="Skkima icon" />
   <h1>쓰끼마 (Skkima)</h1>
   <p><strong>A local research workspace for turning context into traceable work.</strong><br />
   Structure a request, prepare the right workflow, run an AI CLI, and keep the evidence,<br />
