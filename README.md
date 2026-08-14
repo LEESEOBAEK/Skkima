@@ -24,13 +24,9 @@
 
 결국 AI를 잘 활용하려면 도구를 선택하는 것만으로는 부족했습니다. 업무의 흐름과 판단 과정을 함께 설계해야 했습니다.
 
-<a href="https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90">
-  <img src="assets/demo/c02_record_3_public_v2_thumbnail.png" width="960" alt="쓰끼마 제품 데모 영상 재생" />
-</a>
+<sub>브라우저에서 데모 영상을 재생할 수 있습니다.</sub>
 
-<sub>썸네일을 클릭하면 전체 데모 영상을 재생하거나 다운로드할 수 있습니다.</sub>
-
-[브라우저에서 데모 영상 재생](https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90)
+https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90
 
 프로젝트와 작업 세션을 선택하고, 실행 결과·검증 상태·산출물·다음 행동을 한 화면에서 확인하는 작업 공간입니다.
 
