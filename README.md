@@ -24,14 +24,13 @@
 
 결국 AI를 잘 활용하려면 도구를 선택하는 것만으로는 부족했습니다. 업무의 흐름과 판단 과정을 함께 설계해야 했습니다.
 
-<video controls width="960" preload="metadata">
-  <source src="assets/demo/c02_record_3_public_v2.mp4" type="video/mp4" />
-  Your browser does not support embedded video. [Open the demo video](assets/demo/c02_record_3_public_v2.mp4).
-</video>
+<a href="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/portfolio/source-preview/assets/demo/c02_record_3_public_v2.mp4">
+  <img src="assets/demo/c02_record_3_public_v2_thumbnail.jpg" width="960" alt="쓰끼마 제품 데모 영상 재생" />
+</a>
 
-<sub>제품 화면과 기본 작업 흐름을 보여주는 공개 데모입니다.</sub>
+<sub>썸네일을 클릭하면 전체 데모 영상을 재생하거나 다운로드할 수 있습니다.</sub>
 
-[영상 파일 열기](assets/demo/c02_record_3_public_v2.mp4)
+[전체 데모 영상 열기](https://raw.githubusercontent.com/LEESEOBAEK/Skkima/portfolio/source-preview/assets/demo/c02_record_3_public_v2.mp4)
 
 프로젝트와 작업 세션을 선택하고, 실행 결과·검증 상태·산출물·다음 행동을 한 화면에서 확인하는 작업 공간입니다.
 
