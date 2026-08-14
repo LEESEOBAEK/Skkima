@@ -25,7 +25,7 @@
 결국 AI를 잘 활용하려면 도구를 선택하는 것만으로는 부족했습니다. 업무의 흐름과 판단 과정을 함께 설계해야 했습니다.
 
 <a href="https://raw.githubusercontent.com/LEESEOBAEK/Skkima/portfolio/source-preview/assets/demo/c02_record_3_public_v2.mp4">
-  <img src="assets/demo/c02_record_3_public_v2_thumbnail.jpg" width="960" alt="쓰끼마 제품 데모 영상 재생" />
+  <img src="assets/demo/c02_record_3_public_v2_thumbnail.png" width="960" alt="쓰끼마 제품 데모 영상 재생" />
 </a>
 
 <sub>썸네일을 클릭하면 전체 데모 영상을 재생하거나 다운로드할 수 있습니다.</sub>
