@@ -32,6 +32,9 @@ https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90
 
 ![Skkima 공개 코드 범위 구조도](assets/architecture/skkima-public-code-map.svg)
 
+<br />
+<br />
+
 | 영역 | 경로 | 확인할 내용 |
 |---|---|---|
 | 데스크톱 UI | [`apps/browser-workspace-prototype/src/`](apps/browser-workspace-prototype/src/) | 프로젝트·세션·Run 상태 화면 |
