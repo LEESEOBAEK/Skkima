@@ -36,7 +36,7 @@ https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90
 <br />
 
 | 영역 | 경로 | 확인할 내용 |
-|---|---|---|
+|:---:|:---:|:---:|
 | 데스크톱 UI | [`apps/browser-workspace-prototype/src/`](apps/browser-workspace-prototype/src/) | 프로젝트·세션·Run 상태 화면 |
 | Tauri 어댑터 | [`apps/browser-workspace-prototype/src-tauri/src/`](apps/browser-workspace-prototype/src-tauri/src/) | Windows 프로세스·파일·권한 경계 |
 | Python 엔진 | [`engine/python/workflow/`](engine/python/workflow/) | CLI 진입점과 Run 실행 |
