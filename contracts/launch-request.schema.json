@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema-workflow.local/contracts/launch-request.schema.json",
+  "title": "Dashboard Launch Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "launch_id", "operation_id", "project_id", "project_root", "session_id", "platform", "mode", "task", "status", "created_at", "command_preview", "capsule_path", "prompt_path", "script_path"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "launch_id": { "type": "string", "minLength": 1 },
+    "operation_id": { "type": "string", "pattern": "^op_dashboard_" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "project_root": { "type": "string", "minLength": 1 },
+    "session_id": { "type": "string", "minLength": 1 },
+    "session_name": { "type": "string" },
+    "platform": { "enum": ["codex", "claude", "antigravity"] },
+    "mode": { "enum": ["confirm_launch", "trusted_auto"] },
+    "task": { "type": "string", "minLength": 1, "maxLength": 4000 },
+    "run_name": { "type": "string", "maxLength": 120 },
+    "antigravity_new_project": { "type": "boolean" },
+    "status": { "enum": ["prepared", "launched", "bound", "failed"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "launched_at": { "type": ["string", "null"], "format": "date-time" },
+    "bound_at": { "type": ["string", "null"], "format": "date-time" },
+    "run_id": { "type": ["string", "null"] },
+    "command_preview": { "type": "string", "minLength": 1 },
+    "request_dir": { "type": "string" },
+    "capsule_path": { "type": "string", "minLength": 1 },
+    "prompt_path": { "type": "string", "minLength": 1 },
+    "script_path": { "type": "string", "minLength": 1 },
+    "process_id": { "type": "integer", "minimum": 0 },
+    "error": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": { "code": { "type": "string" }, "message": { "type": "string" } },
+      "additionalProperties": false
+    }
+  }
+}

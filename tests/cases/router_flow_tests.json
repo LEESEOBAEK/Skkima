@@ -1,0 +1,377 @@
+{
+  "cases": [
+    {
+      "id": "flow_001_ambiguous_ask_user",
+      "category": "valid_ambiguous",
+      "raw_text": "파이썬으로 자동화하고 싶은데 어디서부터 해야 할지 모르겠어",
+      "expected": {
+        "c_enabled": false,
+        "triggered_by": [],
+        "activated_facets": [],
+        "selected_route": "ask_user",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "미확정",
+          "problem_object": {"value": "unresolved", "basis": "unknown", "confidence": 0.0, "status": "unresolved"},
+          "user_intent": "structure",
+          "definition_level": "low",
+          "risk_level": "medium",
+          "needed_output": {"value": "unresolved", "basis": "unknown", "confidence": 0.0, "status": "unresolved"}
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "ask_user",
+          "route_confidence": 0.86,
+          "reason": "The automation target and desired output are missing.",
+          "evidence": "Raw input says the user does not know where to start."
+        },
+        "missing_decision_basis": [
+          {"facet": "problem_object", "reason": "Automation target is not specified."},
+          {"facet": "needed_output", "reason": "Desired output is not specified."}
+        ],
+        "reference_lenses": ["5w1h", "gap_analysis"]
+      }
+    },
+    {
+      "id": "flow_002_xlsx_proceed",
+      "category": "valid_attachment",
+      "raw_text": "첨부한 sales.xlsx를 읽어서 월별 매출 합계를 계산하는 파이썬 자동화를 만들고 싶어",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["attachment_present"],
+        "activated_facets": ["source_type"],
+        "selected_route": "proceed_to_solution",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "data_processing",
+          "problem_object": "spreadsheet",
+          "user_intent": "automation",
+          "definition_level": "medium",
+          "risk_level": "low",
+          "needed_output": "code",
+          "source_type": "spreadsheet_file"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution",
+          "route_confidence": 0.88,
+          "reason": "The file type, task, and desired automation output are clear enough for solution planning.",
+          "evidence": "sales.xlsx and monthly sales aggregation are explicit."
+        },
+        "reference_lenses": ["ipo"]
+      }
+    },
+    {
+      "id": "flow_003_traceback_framework",
+      "category": "valid_code_error",
+      "raw_text": "파이썬 실행 중 Traceback이 나왔어. ValueError: invalid literal for int() with base 10 오류를 해결하고 싶어",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["code_or_error_present"],
+        "activated_facets": ["source_type"],
+        "selected_route": "run_framework_check",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "software_debugging",
+          "problem_object": "runtime_error",
+          "user_intent": "debug",
+          "definition_level": "medium",
+          "risk_level": "medium",
+          "needed_output": "diagnosis",
+          "source_type": "error_text"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "run_framework_check",
+          "route_confidence": 0.83,
+          "reason": "The traceback should be checked before proposing a fix.",
+          "evidence": "Traceback and ValueError are explicit."
+        },
+        "reference_lenses": ["issue_tree"]
+      }
+    },
+    {
+      "id": "flow_004_contract_pdf_risk_review",
+      "category": "valid_high_risk",
+      "raw_text": "첨부한 계약서 PDF에서 문제가 될 만한 조항을 검토하고 싶어",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["attachment_present", "document_review_request", "high_risk_domain_present"],
+        "activated_facets": ["source_type", "risk_level"],
+        "selected_route": "risk_review",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "legal_document_review",
+          "problem_object": "contract",
+          "user_intent": "review",
+          "definition_level": "medium",
+          "risk_level": "high",
+          "needed_output": "checklist",
+          "source_type": "document_file"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "risk_review",
+          "route_confidence": 0.9,
+          "reason": "Contract review is high-risk and should not go directly to solution.",
+          "evidence": "Contract PDF and problematic clauses are explicit."
+        },
+        "reference_lenses": ["risk_matrix", "assumption_mapping"]
+      }
+    },
+    {
+      "id": "flow_005_urgent_log_framework",
+      "category": "valid_urgency_log",
+      "raw_text": "배포 전 지금 바로 해결해야 해. 서버 로그에 500 error가 반복되고 있어",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["log_present", "urgency_signal_present"],
+        "activated_facets": ["source_type", "urgency_level"],
+        "selected_route": "run_framework_check",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "deployment_debugging",
+          "problem_object": "server_error",
+          "user_intent": "debug",
+          "definition_level": "medium",
+          "risk_level": "medium",
+          "needed_output": "diagnosis",
+          "source_type": "log_text",
+          "urgency_level": "high"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "run_framework_check",
+          "route_confidence": 0.87,
+          "reason": "Urgent server log errors need structured diagnosis before solution.",
+          "evidence": "Deployment timing, server log, and repeated 500 error are explicit."
+        },
+        "reference_lenses": ["issue_tree", "risk_matrix"]
+      }
+    },
+    {
+      "id": "flow_006_report_structure_proceed",
+      "category": "valid_general",
+      "raw_text": "회의 내용을 보고서 형태로 구조화하고 싶어",
+      "expected": {
+        "c_enabled": false,
+        "triggered_by": [],
+        "activated_facets": [],
+        "selected_route": "proceed_to_solution",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "document_generation",
+          "problem_object": "meeting_notes",
+          "user_intent": "structure",
+          "definition_level": "medium",
+          "risk_level": "low",
+          "needed_output": "report"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution",
+          "route_confidence": 0.78,
+          "reason": "The request is low-risk and the desired report output is clear.",
+          "evidence": "Meeting content and report structure are explicit."
+        },
+        "reference_lenses": ["ipo"]
+      }
+    },
+    {
+      "id": "flow_007_privacy_csv_risk_review",
+      "category": "valid_high_risk_data",
+      "raw_text": "개인정보와 결제 정보가 포함된 CSV 파일을 정리해야 해",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["attachment_present", "high_risk_domain_present"],
+        "activated_facets": ["source_type", "risk_level"],
+        "selected_route": "risk_review",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "sensitive_data_processing",
+          "problem_object": "personal_payment_data",
+          "user_intent": "process",
+          "definition_level": "medium",
+          "risk_level": "high",
+          "needed_output": "processing_plan",
+          "source_type": "data_file"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "risk_review",
+          "route_confidence": 0.89,
+          "reason": "Personal and payment data are high-risk, so risk review is required first.",
+          "evidence": "Personal information and payment information are explicit."
+        },
+        "reference_lenses": ["risk_matrix", "mece"]
+      }
+    },
+    {
+      "id": "flow_008_source_file_arg",
+      "category": "valid_source_file_arg",
+      "raw_text": "이 데이터를 요약해줘",
+      "source_files": ["C:\\data\\sales.xlsx"],
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["attachment_present"],
+        "activated_facets": ["source_type"],
+        "selected_route": "proceed_to_solution",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "data_processing",
+          "problem_object": "spreadsheet_data",
+          "user_intent": "summarize",
+          "definition_level": "medium",
+          "risk_level": "low",
+          "needed_output": "summary",
+          "source_type": "spreadsheet_file"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution",
+          "route_confidence": 0.76,
+          "reason": "The source file is provided and the summary output is clear enough.",
+          "evidence": "Source file path is provided."
+        }
+      }
+    },
+    {
+      "id": "flow_009_bad_high_risk_proceed_rejected",
+      "category": "invalid_agent_fill",
+      "raw_text": "첨부한 계약서 PDF에서 문제가 될 만한 조항을 검토하고 싶어",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["attachment_present", "document_review_request", "high_risk_domain_present"],
+        "activated_facets": ["source_type", "risk_level"],
+        "selected_route": "proceed_to_solution",
+        "validation_valid": false,
+        "validation_codes": ["HIGH_RISK_DIRECT_PROCEED_FORBIDDEN", "HIGH_RISK_ROUTE_NOT_SAFE"]
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "legal_document_review",
+          "problem_object": "contract",
+          "user_intent": "review",
+          "definition_level": "medium",
+          "risk_level": "high",
+          "needed_output": "solution",
+          "source_type": "document_file"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution",
+          "route_confidence": 0.91,
+          "reason": "Bad fixture: direct solution selected.",
+          "evidence": "Contract PDF"
+        }
+      }
+    },
+    {
+      "id": "flow_010_bad_inactive_c_filled_rejected",
+      "category": "invalid_agent_fill",
+      "raw_text": "회의 내용을 보고서 형태로 구조화하고 싶어",
+      "expected": {
+        "c_enabled": false,
+        "triggered_by": [],
+        "activated_facets": [],
+        "selected_route": "proceed_to_solution",
+        "validation_valid": false,
+        "validation_codes": ["INACTIVE_C_FACET_FILLED"]
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "document_generation",
+          "problem_object": "meeting_notes",
+          "user_intent": "structure",
+          "definition_level": "medium",
+          "risk_level": "low",
+          "needed_output": "report",
+          "source_type": "natural_language"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution",
+          "route_confidence": 0.78,
+          "reason": "Bad fixture: inactive C facet filled.",
+          "evidence": "General natural-language request"
+        }
+      }
+    },
+    {
+      "id": "flow_011_bad_active_c_missing_rejected",
+      "category": "invalid_agent_fill",
+      "raw_text": "첨부한 sales.xlsx를 읽어서 월별 매출 합계를 계산하는 파이썬 자동화를 만들고 싶어",
+      "expected": {
+        "c_enabled": true,
+        "triggered_by": ["attachment_present"],
+        "activated_facets": ["source_type"],
+        "selected_route": "proceed_to_solution",
+        "validation_valid": false,
+        "validation_codes": ["ACTIVATED_C_FACET_NOT_FILLED"]
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "data_processing",
+          "problem_object": "spreadsheet",
+          "user_intent": "automation",
+          "definition_level": "medium",
+          "risk_level": "low",
+          "needed_output": "code"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution",
+          "route_confidence": 0.82,
+          "reason": "Bad fixture: source_type is missing even though C activated it.",
+          "evidence": "Spreadsheet attachment"
+        }
+      }
+    },
+    {
+      "id": "flow_012_use_ipo_valid",
+      "category": "valid_framework_route",
+      "raw_text": "데이터 입력, 처리, 출력 과정을 단계별로 정리하고 싶어",
+      "expected": {
+        "c_enabled": false,
+        "triggered_by": [],
+        "activated_facets": [],
+        "selected_route": "use_ipo",
+        "validation_valid": true
+      },
+      "agent_fill": {
+        "facets": {
+          "domain_context": "process_design",
+          "problem_object": "data_process",
+          "user_intent": "structure",
+          "definition_level": "medium",
+          "risk_level": "low",
+          "needed_output": "process_design"
+        },
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo",
+          "route_confidence": 0.79,
+          "reason": "Input-process-output mapping directly fits the request.",
+          "evidence": "The user asks for input, processing, and output stages."
+        },
+        "reference_lenses": ["ipo"]
+      }
+    }
+  ]
+}

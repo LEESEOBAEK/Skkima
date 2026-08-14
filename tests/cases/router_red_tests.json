@@ -1,0 +1,303 @@
+{
+  "cases": [
+    {
+      "id": "neg_001_general_automation",
+      "category": "negative_general",
+      "text": "파이썬으로 자동화하고 싶은데 어디서부터 해야 할지 모르겠어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": []
+    },
+    {
+      "id": "neg_002_meeting_report_structure",
+      "category": "negative_general",
+      "text": "회의 내용을 보고서 형태로 구조화하고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": []
+    },
+    {
+      "id": "neg_003_pilot_project",
+      "category": "false_positive_guard",
+      "text": "파일럿 프로젝트 계획을 정리하고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["attachment_present"]
+    },
+    {
+      "id": "neg_004_login_screen",
+      "category": "false_positive_guard",
+      "text": "로그인 화면의 문구를 더 자연스럽게 바꾸고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["log_present"]
+    },
+    {
+      "id": "neg_005_contract_worker",
+      "category": "false_positive_guard",
+      "text": "계약직 채용 프로세스를 정리하고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["high_risk_domain_present"]
+    },
+    {
+      "id": "neg_006_example_filename_only",
+      "category": "false_positive_guard",
+      "text": "첨부는 없고 예시 파일명은 sales.xlsx라고 가정해서 설명만 해줘",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["attachment_present"]
+    },
+    {
+      "id": "pos_007_xlsx_attachment",
+      "category": "attachment",
+      "text": "첨부한 sales.xlsx를 읽어서 월별 매출 합계를 계산하는 파이썬 자동화를 만들고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_008_windows_file_path",
+      "category": "attachment",
+      "text": "C:\\data\\sales.xlsx 파일을 읽어서 요약해줘",
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_009_contract_pdf_attachment",
+      "category": "document_risk",
+      "text": "첨부한 계약서 PDF에서 문제가 될 만한 조항을 검토하고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present", "document_review_request", "high_risk_domain_present"],
+      "expected_activated_facets": ["source_type", "risk_level"]
+    },
+    {
+      "id": "pos_010_contract_review_no_file",
+      "category": "document_risk",
+      "text": "계약서를 검토해서 문제가 될 만한 조항을 자동으로 판단하고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["document_review_request", "high_risk_domain_present"],
+      "expected_activated_facets": ["source_type", "risk_level"]
+    },
+    {
+      "id": "pos_011_payment_privacy_csv",
+      "category": "high_risk_data",
+      "text": "개인정보와 결제 정보가 포함된 CSV 파일을 정리해야 해",
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present", "high_risk_domain_present"],
+      "expected_activated_facets": ["source_type", "risk_level"]
+    },
+    {
+      "id": "pos_012_security_policy_review",
+      "category": "document_risk",
+      "text": "보안 정책 문서를 검토해서 빠진 부분을 찾고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["document_review_request", "high_risk_domain_present"],
+      "expected_activated_facets": ["source_type", "risk_level"]
+    },
+    {
+      "id": "pos_013_medical_data",
+      "category": "high_risk_domain",
+      "text": "의료 데이터 처리 과정을 자동화하고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["high_risk_domain_present"],
+      "expected_activated_facets": ["risk_level"]
+    },
+    {
+      "id": "pos_014_python_traceback",
+      "category": "code_error",
+      "text": "파이썬 실행 중 Traceback이 나왔어. ValueError: invalid literal for int() with base 10 오류를 해결하고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["code_or_error_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_015_stack_trace",
+      "category": "code_error",
+      "text": "The app fails with this stack trace: TypeError: cannot read properties of undefined",
+      "expected_enabled": true,
+      "expected_triggers": ["code_or_error_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "neg_016_generic_error_word",
+      "category": "false_positive_guard",
+      "text": "생각한 방향에 오류가 있는지 일반적으로 검토해줘",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["code_or_error_present"]
+    },
+    {
+      "id": "pos_017_keyerror_message",
+      "category": "code_error",
+      "text": "오류 메시지: KeyError가 나와서 원인을 찾고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["code_or_error_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_018_server_log",
+      "category": "log",
+      "text": "서버 로그에 500 error가 반복되고 있어",
+      "expected_enabled": true,
+      "expected_triggers": ["log_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "neg_019_login_failure_copy",
+      "category": "false_positive_guard",
+      "text": "로그인 실패 안내 문구를 더 친절하게 바꾸고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["log_present"]
+    },
+    {
+      "id": "pos_020_console_log",
+      "category": "log",
+      "text": "콘솔 로그를 보면 WARN 메시지가 계속 떠",
+      "expected_enabled": true,
+      "expected_triggers": ["log_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "neg_020a_blog_channel",
+      "category": "false_positive_guard",
+      "text": "블로그와 SNS 채널의 콘텐츠 운영 계획을 만들고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["log_present"]
+    },
+    {
+      "id": "pos_021_today_deadline",
+      "category": "urgency",
+      "text": "오늘 안에 자동화 방향을 정해야 해",
+      "expected_enabled": true,
+      "expected_triggers": ["urgency_signal_present"],
+      "expected_activated_facets": ["urgency_level"]
+    },
+    {
+      "id": "pos_022_urgent_casual",
+      "category": "urgency",
+      "text": "급하게 처리해야 해서 우선순위를 잡고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["urgency_signal_present"],
+      "expected_activated_facets": ["urgency_level"]
+    },
+    {
+      "id": "pos_023_blocked_casual",
+      "category": "urgency",
+      "text": "지금 막혔어. 어디서부터 봐야 할지 모르겠어",
+      "expected_enabled": true,
+      "expected_triggers": ["urgency_signal_present"],
+      "expected_activated_facets": ["urgency_level"]
+    },
+    {
+      "id": "pos_024_before_deploy",
+      "category": "urgency",
+      "text": "배포 전에 이 오류를 잡아야 해",
+      "expected_enabled": true,
+      "expected_triggers": ["urgency_signal_present"],
+      "expected_activated_facets": ["urgency_level"]
+    },
+    {
+      "id": "neg_025_reference_material",
+      "category": "negative_general",
+      "text": "자료를 보고 정리하는 방법을 알려줘",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": []
+    },
+    {
+      "id": "pos_026_proposal_pdf_review",
+      "category": "document",
+      "text": "proposal.pdf 내용을 review해서 빠진 항목을 정리해줘",
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present", "document_review_request"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_027_error_log_file",
+      "category": "mixed_source",
+      "text": "error.log 파일과 설정 내용을 같이 보고 원인을 찾고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present", "log_present", "mixed_source_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_028_source_file_argument",
+      "category": "source_file_arg",
+      "text": "이 데이터를 요약해줘",
+      "source_files": ["C:\\data\\sales.xlsx"],
+      "expected_enabled": true,
+      "expected_triggers": ["attachment_present"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_029_policy_terms_check",
+      "category": "document",
+      "text": "policy terms를 check해서 위험한 표현을 찾아줘",
+      "expected_enabled": true,
+      "expected_triggers": ["document_review_request"],
+      "expected_activated_facets": ["source_type"]
+    },
+    {
+      "id": "pos_030_finance_report",
+      "category": "high_risk_domain",
+      "text": "finance report에서 이상한 수치를 확인하고 싶어",
+      "expected_enabled": true,
+      "expected_triggers": ["high_risk_domain_present", "document_review_request"],
+      "expected_activated_facets": ["risk_level", "source_type"]
+    },
+    {
+      "id": "neg_031_marketing_logline",
+      "category": "false_positive_guard",
+      "text": "마케팅 로그라인 문구를 더 짧게 다듬고 싶어",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["log_present"]
+    },
+    {
+      "id": "pos_032_security_incident",
+      "category": "risk_urgency",
+      "text": "security incident라서 지금 바로 확인해야 해",
+      "expected_enabled": true,
+      "expected_triggers": ["high_risk_domain_present", "urgency_signal_present"],
+      "expected_activated_facets": ["risk_level", "urgency_level"]
+    },
+    {
+      "id": "neg_033_generic_exception_word",
+      "category": "false_positive_guard",
+      "text": "특별한 예외 없이 일상 아이디어를 다양하게 제안해줘",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["code_or_error_present"]
+    },
+    {
+      "id": "neg_034_explicit_high_risk_exclusion",
+      "category": "false_positive_guard",
+      "text": "의료·법률·재무 분야는 제외하고 일상 아이디어만 제안해줘",
+      "expected_enabled": false,
+      "expected_triggers": [],
+      "expected_activated_facets": [],
+      "forbidden_triggers": ["high_risk_domain_present"]
+    },
+    {
+      "id": "pos_035_high_risk_not_excluded",
+      "category": "high_risk_domain",
+      "text": "의료를 제외하지 말고 의료 데이터 처리 위험을 검토해줘",
+      "expected_enabled": true,
+      "expected_triggers": ["high_risk_domain_present"],
+      "expected_activated_facets": ["risk_level"]
+    }
+  ]
+}

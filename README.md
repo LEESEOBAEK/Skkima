@@ -5,7 +5,7 @@
   Clarify the request, identify where human review is needed, use AI tools, and keep the context,<br />
   evidence, results, and recovery path connected.</p>
   <p>
-    <img src="https://img.shields.io/badge/version-0.1.7-7564B8" alt="Version 0.1.7" />
+    <img src="https://img.shields.io/badge/version-0.1.8--portfolio--preview-7564B8" alt="Version 0.1.8 portfolio preview" />
     <img src="https://img.shields.io/badge/platform-Windows-4266C6" alt="Windows" />
     <img src="https://img.shields.io/badge/Tauri-2-24C8DB" alt="Tauri 2" />
     <img src="https://img.shields.io/badge/license-MIT-111827" alt="MIT license" />
@@ -27,3 +27,62 @@
 ![Skkima workflow workspace](assets/screenshots/portfolio-workflow-session-public.png)
 
 프로젝트와 작업 세션을 선택하고, 실행 결과·검증 상태·산출물·다음 행동을 한 화면에서 확인하는 작업 공간입니다.
+
+## 공개된 코드 범위
+
+이 저장소는 문서만 보여주는 소개 페이지가 아니라, 포트폴리오 검토를 위한 실행 가능한
+코드 스냅샷을 포함합니다.
+
+| 영역 | 경로 | 확인할 내용 |
+|---|---|---|
+| 데스크톱 UI | `apps/browser-workspace-prototype/src/` | 프로젝트·세션·Run 상태 화면 |
+| Tauri 어댑터 | `apps/browser-workspace-prototype/src-tauri/src/` | Windows 프로세스·파일·권한 경계 |
+| Python 엔진 | `engine/python/workflow/` | CLI 진입점과 Run 실행 |
+| 거버넌스 모듈 | `engine/python/shared/` | Run·artifact·continuation 계약 |
+| 워크플로 계층 | `engine/python/layers/` | 입력 구조화·라우팅·검증·보고 |
+| 계약·샘플 | `contracts/`, `fixtures/` | 스키마와 재현 가능한 테스트 입력 |
+| 검증 | `tests/`, `apps/browser-workspace-prototype/tests/` | 회귀·거버넌스·UI 테스트 |
+
+## 로컬 실행
+
+```powershell
+cd apps\browser-workspace-prototype
+npm ci
+npm test
+npm run dev
+```
+
+포트폴리오용 Windows 설치 파일은 다음 명령으로 빌드합니다.
+
+```powershell
+npm run build:portfolio
+```
+
+Python 엔진의 CLI 도움말은 저장소 루트에서 확인할 수 있습니다.
+
+```powershell
+python .\engine\python\workflow\workflow_runner.py --help
+```
+
+## Portfolio Preview 범위
+
+- Windows 11 x64 기준
+- 외부 AI CLI가 없어도 UI와 샘플 코드·테스트를 확인할 수 있음
+- 실제 사용자 Run, 개인 경로, 자격 증명, 내부 실험 산출물은 포함하지 않음
+- Codex·Claude Code·Antigravity 연결은 설치된 환경에서 선택적으로 사용
+- 운영 버전과 포트폴리오 데이터 경로는 분리
+
+설치 파일은 소스 저장소가 아닌 GitHub Release Asset으로 배포하며, 제품의 전체 개발
+저장소와 내부 검증 자료는 별도 개발 저장소에서 관리합니다.
+
+## 구조 안내
+
+```text
+apps/       Windows desktop app
+engine/     Python workflow engine
+agents/     Agent operating contract and integration boundaries
+contracts/  JSON schemas
+fixtures/   Synthetic test inputs
+tests/      Regression and contract tests
+docs/       Product explanation and portfolio notes
+```

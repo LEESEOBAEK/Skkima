@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "projects": [
+    {
+      "project_id": "project_demo_pet",
+      "name": "Codex Pet",
+      "sessions": [
+        {
+          "session_id": "session_slime_visual",
+          "name": "슬라임 외형 탐색",
+          "relation_status": "confirmed",
+          "runs": [
+            {
+              "run_id": "run_slime_001",
+              "status": "pass",
+              "platform": "codex",
+              "next_action": "승인된 시안 검토",
+              "artifact_count": 3,
+              "evidence_count": 2
+            },
+            {
+              "run_id": "run_slime_002",
+              "status": "evidence_insufficient",
+              "platform": "claude",
+              "next_action": "외형 선택 근거 보강",
+              "artifact_count": 1,
+              "evidence_count": 0
+            }
+          ]
+        },
+        {
+          "session_id": "session_unresolved_001",
+          "name": "연결 확인 필요",
+          "relation_status": "unresolved",
+          "candidate_project_ids": ["project_demo_pet"],
+          "runs": [
+            {
+              "run_id": "run_unresolved_001",
+              "status": "hold",
+              "platform": "antigravity",
+              "next_action": "Project 관계 확인",
+              "artifact_count": 1,
+              "evidence_count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "relation_id": "rel_conflict_001",
+      "source_id": "run_conflict_001",
+      "target_id": "session_slime_visual",
+      "reason": "ProjectRoot와 지정 Project ID가 일치하지 않음"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "cases": [
+    {
+      "id": "valid_001_ask_user_5w1h_gap",
+      "category": "valid_clarification",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "ask_user"},
+        "facet_classification": {
+          "problem_object": {"value": "unresolved"},
+          "user_intent": {"value": "structure"},
+          "needed_output": {"value": "unresolved"},
+          "risk_level": {"value": "medium"}
+        },
+        "missing_decision_basis": [{"facet": "problem_object", "reason": "missing"}],
+        "reference_lenses": ["5w1h", "gap_analysis"]
+      },
+      "direction_filled": {
+        "selected_lenses": ["5w1h", "gap_analysis"],
+        "direction_decision": {
+          "direction_status": "needs_more_input",
+          "problem_direction": "Clarify the target and expected output before selecting a solution path.",
+          "why_this_direction": "The router selected ask_user because important basis is missing.",
+          "evidence": "problem_object and needed_output are unresolved."
+        },
+        "coverage_check": {"mece_checked": false, "missing_areas": ["target", "output"], "assumptions_to_verify": []},
+        "missing_basis": [{"facet": "problem_object", "reason": "target is unclear"}],
+        "next_action": {"action_type": "ask_user", "reason": "Clarification is needed first."}
+      }
+    },
+    {
+      "id": "valid_002_use_ipo",
+      "category": "valid_ipo",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "use_ipo"},
+        "facet_classification": {
+          "problem_object": {"value": "data_process"},
+          "user_intent": {"value": "structure"},
+          "needed_output": {"value": "process_design"},
+          "risk_level": {"value": "low"}
+        },
+        "reference_lenses": ["ipo"]
+      },
+      "direction_filled": {
+        "selected_lenses": ["ipo", "mece"],
+        "direction_decision": {
+          "direction_status": "ready_for_next_step",
+          "problem_direction": "Map the request as input, process, and output.",
+          "why_this_direction": "The selected route is use_ipo.",
+          "evidence": "The task asks for process structure."
+        },
+        "coverage_check": {"mece_checked": true, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "run_lens", "reason": "Run IPO mapping."}
+      }
+    },
+    {
+      "id": "valid_003_risk_review",
+      "category": "valid_risk",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "risk_review"},
+        "facet_classification": {
+          "problem_object": {"value": "contract"},
+          "user_intent": {"value": "review"},
+          "needed_output": {"value": "checklist"},
+          "risk_level": {"value": "high"}
+        },
+        "reference_lenses": ["risk_matrix"]
+      },
+      "direction_filled": {
+        "selected_lenses": ["risk_matrix", "assumption_mapping", "mece"],
+        "direction_decision": {
+          "direction_status": "needs_risk_review",
+          "problem_direction": "Review risks before any solution recommendation.",
+          "why_this_direction": "Contract review is high risk.",
+          "evidence": "risk_level is high and selected_route is risk_review."
+        },
+        "coverage_check": {"mece_checked": true, "missing_areas": ["contract scope"], "assumptions_to_verify": ["risk criteria"]},
+        "missing_basis": [{"facet": "risk_criteria", "reason": "criteria are not provided"}],
+        "next_action": {"action_type": "run_lens", "reason": "Run risk matrix first."}
+      }
+    },
+    {
+      "id": "valid_004_situation_map",
+      "category": "valid_situation_map",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "use_situation_map"},
+        "facet_classification": {
+          "problem_object": {"value": "work_situation"},
+          "user_intent": {"value": "classify"},
+          "needed_output": {"value": "exploration_map"},
+          "risk_level": {"value": "low"}
+        },
+        "reference_lenses": ["mandalart"]
+      },
+      "direction_filled": {
+        "selected_lenses": ["mandalart", "mece"],
+        "direction_decision": {
+          "direction_status": "ready_for_next_step",
+          "problem_direction": "Expand the situation into domains and subdomains.",
+          "why_this_direction": "Situation map route was selected.",
+          "evidence": "The output is an exploration map."
+        },
+        "coverage_check": {"mece_checked": true, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "use_situation_map", "reason": "Use situation map expansion."}
+      }
+    },
+    {
+      "id": "valid_005_framework_check_debug",
+      "category": "valid_framework",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "run_framework_check"},
+        "facet_classification": {
+          "problem_object": {"value": "runtime_error"},
+          "user_intent": {"value": "debug"},
+          "needed_output": {"value": "diagnosis"},
+          "risk_level": {"value": "medium"},
+          "source_type": {"value": "error_text"}
+        },
+        "reference_lenses": ["issue_tree"]
+      },
+      "direction_filled": {
+        "selected_lenses": ["issue_tree", "assumption_mapping"],
+        "direction_decision": {
+          "direction_status": "ready_for_framework_check",
+          "problem_direction": "Break the error into possible causes before proposing a fix.",
+          "why_this_direction": "The route asks for framework check and source is error text.",
+          "evidence": "runtime_error and diagnosis are present."
+        },
+        "coverage_check": {"mece_checked": false, "missing_areas": ["runtime context"], "assumptions_to_verify": ["input value type"]},
+        "missing_basis": [],
+        "next_action": {"action_type": "run_lens", "reason": "Run issue tree diagnostics."}
+      }
+    },
+    {
+      "id": "valid_006_proceed_solution_ipo",
+      "category": "valid_proceed",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "proceed_to_solution"},
+        "facet_classification": {
+          "problem_object": {"value": "spreadsheet"},
+          "user_intent": {"value": "automation"},
+          "needed_output": {"value": "code"},
+          "risk_level": {"value": "low"}
+        },
+        "reference_lenses": ["ipo"]
+      },
+      "direction_filled": {
+        "selected_lenses": ["ipo"],
+        "direction_decision": {
+          "direction_status": "ready_for_next_step",
+          "problem_direction": "Move to solution planning with input, process, and output framing.",
+          "why_this_direction": "Low-risk automation can proceed.",
+          "evidence": "problem object, intent, and output are clear."
+        },
+        "coverage_check": {"mece_checked": false, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "proceed", "reason": "Proceed to solution planning."}
+      }
+    },
+    {
+      "id": "invalid_007_ipo_missing",
+      "category": "invalid_required_lens",
+      "expected_valid": false,
+      "expected_codes": ["REQUIRED_LENS_MISSING"],
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "use_ipo"},
+        "facet_classification": {
+          "problem_object": {"value": "data_process"},
+          "user_intent": {"value": "structure"},
+          "needed_output": {"value": "process_design"},
+          "risk_level": {"value": "low"}
+        }
+      },
+      "direction_filled": {
+        "selected_lenses": ["mece"],
+        "direction_decision": {
+          "direction_status": "ready_for_next_step",
+          "problem_direction": "Map process.",
+          "why_this_direction": "Process structure.",
+          "evidence": "process request."
+        },
+        "coverage_check": {"mece_checked": true, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "run_lens", "reason": "Run lens."}
+      }
+    },
+    {
+      "id": "invalid_008_unknown_lens",
+      "category": "invalid_lens",
+      "expected_valid": false,
+      "expected_codes": ["UNKNOWN_LENS"],
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "run_framework_check"},
+        "facet_classification": {
+          "problem_object": {"value": "problem"},
+          "user_intent": {"value": "analyze"},
+          "needed_output": {"value": "report"},
+          "risk_level": {"value": "low"}
+        }
+      },
+      "direction_filled": {
+        "selected_lenses": ["magic_framework", "mece"],
+        "direction_decision": {
+          "direction_status": "ready_for_framework_check",
+          "problem_direction": "Analyze.",
+          "why_this_direction": "Framework check.",
+          "evidence": "route selected."
+        },
+        "coverage_check": {"mece_checked": true, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "run_lens", "reason": "Run framework."}
+      }
+    },
+    {
+      "id": "invalid_009_high_risk_ready",
+      "category": "invalid_high_risk",
+      "expected_valid": false,
+      "expected_codes": ["HIGH_RISK_UNSAFE_DIRECTION_STATUS"],
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "risk_review"},
+        "facet_classification": {
+          "problem_object": {"value": "privacy_data"},
+          "user_intent": {"value": "process"},
+          "needed_output": {"value": "plan"},
+          "risk_level": {"value": "high"}
+        }
+      },
+      "direction_filled": {
+        "selected_lenses": ["risk_matrix"],
+        "direction_decision": {
+          "direction_status": "ready_for_next_step",
+          "problem_direction": "Proceed directly.",
+          "why_this_direction": "Bad fixture.",
+          "evidence": "high risk."
+        },
+        "coverage_check": {"mece_checked": false, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "proceed", "reason": "Bad fixture."}
+      }
+    },
+    {
+      "id": "invalid_010_high_risk_no_risk_lens",
+      "category": "invalid_high_risk",
+      "expected_valid": false,
+      "expected_codes": ["HIGH_RISK_REQUIRES_RISK_LENS", "REQUIRED_LENS_MISSING"],
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "risk_review"},
+        "facet_classification": {
+          "problem_object": {"value": "contract"},
+          "user_intent": {"value": "review"},
+          "needed_output": {"value": "checklist"},
+          "risk_level": {"value": "high"}
+        }
+      },
+      "direction_filled": {
+        "selected_lenses": ["mece"],
+        "direction_decision": {
+          "direction_status": "needs_risk_review",
+          "problem_direction": "Review risk.",
+          "why_this_direction": "High risk.",
+          "evidence": "contract."
+        },
+        "coverage_check": {"mece_checked": true, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "run_lens", "reason": "Bad fixture missing risk lens."}
+      }
+    },
+    {
+      "id": "invalid_011_more_input_without_basis",
+      "category": "invalid_missing_basis",
+      "expected_valid": false,
+      "expected_codes": ["MISSING_BASIS_REQUIRED"],
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "ask_user"},
+        "facet_classification": {
+          "problem_object": {"value": "unresolved"},
+          "user_intent": {"value": "structure"},
+          "needed_output": {"value": "unresolved"},
+          "risk_level": {"value": "medium"}
+        }
+      },
+      "direction_filled": {
+        "selected_lenses": ["5w1h"],
+        "direction_decision": {
+          "direction_status": "needs_more_input",
+          "problem_direction": "Ask for more input.",
+          "why_this_direction": "Missing target.",
+          "evidence": "unresolved."
+        },
+        "coverage_check": {"mece_checked": false, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "ask_user", "reason": "Ask user."}
+      }
+    },
+    {
+      "id": "invalid_012_missing_direction_fields",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["DIRECTION_FIELD_REQUIRED"],
+      "router_filled": {
+        "route_decision": {"route_status": "selected", "selected_route": "use_situation_map"},
+        "facet_classification": {
+          "problem_object": {"value": "work_situation"},
+          "user_intent": {"value": "classify"},
+          "needed_output": {"value": "map"},
+          "risk_level": {"value": "low"}
+        }
+      },
+      "direction_filled": {
+        "selected_lenses": ["mandalart"],
+        "direction_decision": {
+          "direction_status": "ready_for_next_step",
+          "problem_direction": "",
+          "why_this_direction": "",
+          "evidence": ""
+        },
+        "coverage_check": {"mece_checked": false, "missing_areas": [], "assumptions_to_verify": []},
+        "missing_basis": [],
+        "next_action": {"action_type": "use_situation_map", "reason": "Use map."}
+      }
+    }
+  ]
+}

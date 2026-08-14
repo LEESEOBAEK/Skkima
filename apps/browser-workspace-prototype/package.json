@@ -1,0 +1,16 @@
+{
+  "name": "skkima-browser-workspace-prototype",
+  "private": true,
+  "version": "0.1.8",
+  "packageManager": "npm@11.6.2",
+  "type": "module",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:portfolio": "tauri build --config src-tauri/tauri.portfolio.conf.json --features custom-protocol,portfolio",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.11.4"
+  }
+}

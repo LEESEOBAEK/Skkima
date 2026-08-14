@@ -1,0 +1,2160 @@
+{
+  "cases": [
+    {
+      "id": "valid_001_python_automation_context",
+      "category": "valid_general_context",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo"
+        },
+        "facet_classification": {
+          "domain_context": {
+            "value": "python_automation"
+          },
+          "problem_object": {
+            "value": "automation_implementation_approach"
+          },
+          "user_intent": {
+            "value": "implementation_planning"
+          },
+          "definition_level": {
+            "value": "ambiguous"
+          },
+          "risk_level": {
+            "value": "low"
+          },
+          "needed_output": {
+            "value": "structured_implementation_direction"
+          }
+        },
+        "missing_decision_basis": [
+          {
+            "facet": "problem_object",
+            "reason": "The exact automation target is not explicit."
+          }
+        ],
+        "reference_lenses": [
+          "ipo",
+          "gap_analysis"
+        ]
+      },
+      "direction_filled": {
+        "selected_lenses": [
+          "ipo",
+          "gap_analysis"
+        ],
+        "direction_decision": {
+          "direction_status": "needs_more_input",
+          "problem_direction": "Clarify the automation target and input/output before solution planning.",
+          "why_this_direction": "The input asks for Python automation but does not define the concrete workflow.",
+          "evidence": "Python automation is explicit; target and output are missing."
+        },
+        "missing_basis": [
+          {
+            "facet": "automation_target",
+            "reason": "Not specified."
+          }
+        ],
+        "next_action": {
+          "action_type": "ask_user",
+          "reason": "Clarify the workflow."
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Python automation approach is unclear.",
+          "domain_area": "software_development_and_workflow_automation",
+          "situation_context": "The user wants automation but has not defined the task boundaries.",
+          "actor_context": "User needs guided structuring before implementation.",
+          "problem_type": "ambiguous_goal_to_actionable_plan",
+          "task_object": "python_automation_workflow",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input source",
+            "output target",
+            "manual process",
+            "execution environment"
+          ],
+          "missing_context": [
+            "automation target",
+            "input source",
+            "desired output",
+            "whether the automation is personal work, internal company work, or client work"
+          ],
+          "context_links": [
+            {
+              "from": "python_automation",
+              "to": "ipo_analysis",
+              "relation": "usually_requires",
+              "evidence": "Automation needs input, process, and output framing."
+            }
+          ],
+          "recommended_next_focus": [
+            "define input/output",
+            "describe the repeated manual process"
+          ],
+          "evidence_basis": [
+            "User explicitly mentioned Python automation.",
+            "User explicitly said they do not know how to approach it."
+          ],
+          "confidence": 0.78,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "B_minimum_detail_required",
+            "activation_reason": "Experiment period always generates the exploration path.",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습",
+                "업무",
+                "직무",
+                "문서",
+                "데이터",
+                "개발",
+                "자동화",
+                "의사결정",
+                "리스크"
+              ],
+              "other_candidates": [],
+              "selected": "자동화",
+              "reason": "The user explicitly mentioned Python automation.",
+              "evidence": "Python automation is explicit."
+            },
+            "stage_2_subcategory": {
+              "parent": "자동화",
+              "default_candidates_by_start_area": {
+                "자동화": [
+                  "반복작업",
+                  "입력",
+                  "처리",
+                  "출력",
+                  "스케줄",
+                  "오류처리"
+                ]
+              },
+              "default_candidates": [
+                "반복작업",
+                "입력",
+                "처리",
+                "출력",
+                "스케줄",
+                "오류처리"
+              ],
+              "agent_added_candidates": [
+                "구현접근"
+              ],
+              "selected": "구현접근",
+              "reason": "The user's concrete issue is how to approach implementation.",
+              "evidence": "The user does not know how to approach automation implementation."
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "자동화",
+                "구현접근"
+              ],
+              "example_candidates": [
+                "입력 파일",
+                "반복 작업",
+                "출력 결과",
+                "실행 환경",
+                "오류 처리"
+              ],
+              "agent_generated_candidates": [
+                "자동화 대상",
+                "입력 소스",
+                "출력 형식",
+                "현재 수작업 흐름"
+              ],
+              "selected": "현재 수작업 흐름",
+              "reason": "The current manual workflow must be known before automation design.",
+              "evidence": "The automation target is not explicit."
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "attribute",
+                "relationship",
+                "rule",
+                "context"
+              ],
+              "axis_notes": {
+                "type": "",
+                "object": "Identify what is being automated.",
+                "attribute": "Clarify input/output and repeat frequency.",
+                "relationship": "Connect input, process, and output.",
+                "state": "",
+                "event": "",
+                "rule": "Clarify when automation is possible.",
+                "context": "User is in exploration stage."
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "minimum_one_detail_per_activated_axis",
+              "axis_details": {
+                "object": [
+                  "automation target"
+                ],
+                "attribute": [
+                  "input and output format"
+                ],
+                "relationship": [
+                  "input -> process -> output"
+                ],
+                "rule": [
+                  "input/output must be defined before implementation"
+                ],
+                "context": [
+                  "pre-implementation exploration"
+                ]
+              },
+              "usage_direction": "Use these details to ask for the automation target and I/O before implementation."
+            }
+          },
+          "actor_scope": {
+            "primary_actor": "unknown",
+            "request_context": "unknown",
+            "decision_owner": "unknown",
+            "affected_parties": [
+              "user"
+            ],
+            "evidence": "The user said they want to implement Python automation, but did not state whether it is personal, company, or client work.",
+            "confidence": 0.45,
+            "missing_context": [
+              "whether the automation is personal work, internal company work, or client work"
+            ],
+            "classification_self_check": {
+              "minimum_evidence_used": [
+                "The user said they want to implement Python automation, but did not state whether it is personal, company, or client work."
+              ],
+              "competing_classifications": [
+                "individual",
+                "company",
+                "team"
+              ],
+              "why_not_other_actor_scope": "Actor ownership is not explicitly supported, so unknown is safer than guessing.",
+              "could_be_wrong_if": [
+                "whether the automation is personal work, internal company work, or client work"
+              ]
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "ask_user",
+          "target": "missing_context",
+          "reason": "The automation target and I/O are still missing."
+        }
+      }
+    },
+    {
+      "id": "valid_002_contract_review_context",
+      "category": "valid_high_risk_context",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "risk_review"
+        },
+        "facet_classification": {
+          "domain_context": {
+            "value": "legal_document_review"
+          },
+          "problem_object": {
+            "value": "contract"
+          },
+          "user_intent": {
+            "value": "review_risk"
+          },
+          "definition_level": {
+            "value": "medium"
+          },
+          "risk_level": {
+            "value": "high"
+          },
+          "needed_output": {
+            "value": "risk_checklist"
+          }
+        },
+        "reference_lenses": [
+          "risk_matrix",
+          "assumption_mapping"
+        ]
+      },
+      "direction_filled": {
+        "selected_lenses": [
+          "risk_matrix",
+          "assumption_mapping"
+        ],
+        "direction_decision": {
+          "direction_status": "needs_risk_review",
+          "problem_direction": "Map document risk before any recommendation.",
+          "why_this_direction": "Contract review is high risk.",
+          "evidence": "risk_level is high."
+        },
+        "missing_basis": [
+          {
+            "facet": "contract_scope",
+            "reason": "Scope is not given."
+          }
+        ],
+        "next_action": {
+          "action_type": "run_lens",
+          "reason": "Run risk matrix."
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Contract risk review context must be clarified.",
+          "domain_area": "legal_and_document_risk",
+          "situation_context": "The user needs a risk-focused review of a contract-like document.",
+          "actor_context": "User needs evidence-backed caution before acting.",
+          "problem_type": "high_risk_document_review",
+          "task_object": "contract_document",
+          "situation_phase": "review",
+          "required_context": [
+            "contract scope",
+            "jurisdiction",
+            "risk criteria",
+            "document text"
+          ],
+          "missing_context": [
+            "contract scope",
+            "risk criteria",
+            "whether the contract is personal or company-owned",
+            "which contract party the user represents"
+          ],
+          "context_links": [
+            {
+              "from": "contract_document",
+              "to": "risk_matrix",
+              "relation": "requires",
+              "evidence": "High-risk contract review should classify risk before advice."
+            }
+          ],
+          "recommended_next_focus": [
+            "define risk criteria",
+            "extract clauses",
+            "classify impact"
+          ],
+          "evidence_basis": [
+            "Router risk_level is high.",
+            "Route decision selected risk_review."
+          ],
+          "confidence": 0.82,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "A_full_detail_required",
+            "activation_reason": "High-risk document review benefits from richer staged exploration.",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습",
+                "업무",
+                "직무",
+                "문서",
+                "데이터",
+                "개발",
+                "자동화",
+                "의사결정",
+                "리스크"
+              ],
+              "other_candidates": [
+                "법무"
+              ],
+              "selected": "리스크",
+              "reason": "Contract review has high-risk implications.",
+              "evidence": "risk_level is high and selected route is risk_review."
+            },
+            "stage_2_subcategory": {
+              "parent": "리스크",
+              "default_candidates_by_start_area": {
+                "리스크": [
+                  "법무",
+                  "보안",
+                  "개인정보",
+                  "금전",
+                  "의료",
+                  "평판"
+                ]
+              },
+              "default_candidates": [
+                "법무",
+                "보안",
+                "개인정보",
+                "금전",
+                "의료",
+                "평판"
+              ],
+              "agent_added_candidates": [
+                "계약조건",
+                "책임범위"
+              ],
+              "selected": "법무",
+              "reason": "The object is a contract document.",
+              "evidence": "Contract review is explicit."
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "리스크",
+                "법무"
+              ],
+              "example_candidates": [
+                "계약서",
+                "조항",
+                "책임",
+                "금액",
+                "기간",
+                "해지",
+                "관할"
+              ],
+              "agent_generated_candidates": [
+                "위험 조항",
+                "불리한 조건",
+                "책임 범위",
+                "해지 조건"
+              ],
+              "selected": "위험 조항",
+              "reason": "The user asks for risky clauses.",
+              "evidence": "Risky and unfavorable terms are explicit."
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "axis_notes": {
+                "type": "",
+                "object": "Contract clauses and parties.",
+                "attribute": "Risk-bearing properties such as amount, duration, obligation, and jurisdiction.",
+                "relationship": "Connect clause to obligation, breach, and liability.",
+                "state": "Review state and confirmation state matter.",
+                "event": "Breach, termination, delay, and dispute events matter.",
+                "rule": "High-risk document review must avoid unsupported legal conclusions.",
+                "context": "Jurisdiction and party position are missing."
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "full_detail_required_for_activated_axes",
+              "axis_details": {
+                "object": [
+                  "contract document",
+                  "risk clause",
+                  "counterparty"
+                ],
+                "attribute": [
+                  "liability scope",
+                  "payment amount",
+                  "termination condition"
+                ],
+                "relationship": [
+                  "clause -> obligation",
+                  "breach event -> liability"
+                ],
+                "state": [
+                  "unreviewed",
+                  "needs confirmation"
+                ],
+                "event": [
+                  "contract breach",
+                  "termination",
+                  "payment delay"
+                ],
+                "rule": [
+                  "mark evidence clause",
+                  "do not make unsupported legal advice"
+                ],
+                "context": [
+                  "jurisdiction missing",
+                  "party position missing"
+                ]
+              },
+              "usage_direction": "Use these details as the basis for risk_matrix and assumption_mapping."
+            }
+          },
+          "actor_scope": {
+            "primary_actor": "unknown",
+            "request_context": "compliance_or_risk",
+            "decision_owner": "unknown",
+            "affected_parties": [
+              "user",
+              "contract counterpart"
+            ],
+            "evidence": "The route identifies contract risk, but the user did not state whether the contract belongs to an individual or company actor.",
+            "confidence": 0.52,
+            "missing_context": [
+              "whether the contract is personal or company-owned",
+              "which contract party the user represents"
+            ],
+            "classification_self_check": {
+              "minimum_evidence_used": [
+                "The route identifies contract risk, but the user did not state whether the contract belongs to an individual or company actor."
+              ],
+              "competing_classifications": [
+                "individual",
+                "company",
+                "team"
+              ],
+              "why_not_other_actor_scope": "Actor ownership is not explicitly supported, so unknown is safer than guessing.",
+              "could_be_wrong_if": [
+                "whether the contract is personal or company-owned",
+                "which contract party the user represents"
+              ]
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "risk_review",
+          "target": "risk_matrix",
+          "reason": "Risk context must be handled before a solution."
+        }
+      }
+    },
+    {
+      "id": "valid_003_mandalart_optional_view",
+      "category": "valid_optional_view",
+      "expected_valid": true,
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_situation_map"
+        },
+        "facet_classification": {
+          "domain_context": {
+            "value": "learning_plan"
+          },
+          "problem_object": {
+            "value": "study_goal"
+          },
+          "user_intent": {
+            "value": "plan"
+          },
+          "definition_level": {
+            "value": "medium"
+          },
+          "risk_level": {
+            "value": "low"
+          },
+          "needed_output": {
+            "value": "study_plan"
+          }
+        },
+        "reference_lenses": [
+          "mandalart",
+          "mece"
+        ]
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Study plan needs structured expansion.",
+          "domain_area": "learning_and_self_development",
+          "situation_context": "The user has a goal but needs an organized plan.",
+          "actor_context": "Learner needs a manageable planning structure.",
+          "problem_type": "goal_decomposition",
+          "task_object": "study_plan",
+          "situation_phase": "design",
+          "required_context": [
+            "goal",
+            "current level",
+            "time budget",
+            "evaluation method"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "study_goal",
+              "to": "goal_decomposition",
+              "relation": "requires",
+              "evidence": "Planning requires breaking the goal into parts."
+            }
+          ],
+          "recommended_next_focus": [
+            "split topics",
+            "set time blocks",
+            "define feedback loop"
+          ],
+          "evidence_basis": [
+            "Route decision selected use_situation_map."
+          ],
+          "confidence": 0.74,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": true,
+              "center": "study_plan",
+              "branches": [
+                {
+                  "label": "goal",
+                  "reason": "Clarify target."
+                },
+                {
+                  "label": "time",
+                  "reason": "Set schedule."
+                },
+                {
+                  "label": "resources",
+                  "reason": "Choose materials."
+                }
+              ]
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "B_minimum_detail_required",
+            "activation_reason": "Experiment period always generates the exploration path.",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습",
+                "업무",
+                "직무",
+                "문서",
+                "데이터",
+                "개발",
+                "자동화",
+                "의사결정",
+                "리스크"
+              ],
+              "other_candidates": [],
+              "selected": "학습",
+              "reason": "The situation is a study plan.",
+              "evidence": "study_goal and study_plan are explicit."
+            },
+            "stage_2_subcategory": {
+              "parent": "학습",
+              "default_candidates_by_start_area": {
+                "학습": [
+                  "목표",
+                  "수준",
+                  "커리큘럼",
+                  "일정",
+                  "피드백",
+                  "결과물"
+                ]
+              },
+              "default_candidates": [
+                "목표",
+                "수준",
+                "커리큘럼",
+                "일정",
+                "피드백",
+                "결과물"
+              ],
+              "agent_added_candidates": [
+                "계획"
+              ],
+              "selected": "계획",
+              "reason": "The user needs an organized plan.",
+              "evidence": "The needed output is study_plan."
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "학습",
+                "계획"
+              ],
+              "example_candidates": [
+                "목표",
+                "현재 수준",
+                "시간",
+                "자료",
+                "결과물"
+              ],
+              "agent_generated_candidates": [
+                "학습 목표",
+                "일정",
+                "자료",
+                "피드백"
+              ],
+              "selected": "학습 목표",
+              "reason": "Goal decomposition is the first planning object.",
+              "evidence": "The route selected use_situation_map."
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "attribute",
+                "relationship",
+                "rule",
+                "context"
+              ],
+              "axis_notes": {
+                "type": "",
+                "object": "Study plan and goal.",
+                "attribute": "Level, time, and resource attributes.",
+                "relationship": "Goal connects to topics and schedule.",
+                "state": "",
+                "event": "",
+                "rule": "Plan must fit available time.",
+                "context": "Learner needs a manageable planning structure."
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "minimum_one_detail_per_activated_axis",
+              "axis_details": {
+                "object": [
+                  "study goal"
+                ],
+                "attribute": [
+                  "time budget"
+                ],
+                "relationship": [
+                  "goal -> topics -> schedule"
+                ],
+                "rule": [
+                  "plan must fit available time"
+                ],
+                "context": [
+                  "learner needs manageable structure"
+                ]
+              },
+              "usage_direction": "Use these details to turn the study goal into milestones."
+            }
+          },
+          "actor_scope": {
+            "primary_actor": "individual",
+            "request_context": "learning_goal",
+            "decision_owner": "user",
+            "affected_parties": [
+              "user"
+            ],
+            "evidence": "The route selected a study plan and the situation is framed as a learner planning their own learning goal.",
+            "confidence": 0.82,
+            "missing_context": [],
+            "classification_self_check": {
+              "minimum_evidence_used": [
+                "The route selected a study plan and the situation is framed as a learner planning their own learning goal."
+              ],
+              "competing_classifications": [],
+              "why_not_other_actor_scope": "The available evidence supports individual more directly than other actor categories.",
+              "could_be_wrong_if": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "run_context_map",
+          "target": "goal_decomposition",
+          "reason": "The context is ready for structured expansion."
+        }
+      }
+    },
+    {
+      "id": "invalid_004_missing_required_fields",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": [
+        "CONTEXT_FIELD_REQUIRED"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "proceed_to_solution"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "",
+          "domain_area": "",
+          "situation_context": "",
+          "problem_type": "",
+          "task_object": "",
+          "situation_phase": "",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "b",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 0.5,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "proceed",
+          "reason": "Proceed."
+        }
+      }
+    },
+    {
+      "id": "invalid_005_no_evidence",
+      "category": "invalid_evidence",
+      "expected_valid": false,
+      "expected_codes": [
+        "CONTEXT_LIST_REQUIRED"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "domain",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "type",
+          "task_object": "object",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "b",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [],
+          "confidence": 0.5,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "proceed",
+          "reason": "Proceed."
+        }
+      }
+    },
+    {
+      "id": "invalid_006_confidence_out_of_range",
+      "category": "invalid_confidence",
+      "expected_valid": false,
+      "expected_codes": [
+        "CONTEXT_CONFIDENCE_INVALID"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "domain",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "type",
+          "task_object": "object",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "b",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 1.4,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "proceed",
+          "reason": "Proceed."
+        }
+      }
+    },
+    {
+      "id": "invalid_007_ask_user_without_missing_context",
+      "category": "invalid_missing_context",
+      "expected_valid": false,
+      "expected_codes": [
+        "MISSING_CONTEXT_REQUIRED"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "ask_user"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "medium"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Ambiguous request",
+          "domain_area": "general",
+          "situation_context": "User needs clarification.",
+          "actor_context": "User is asking for guidance.",
+          "problem_type": "ambiguous_goal",
+          "task_object": "request",
+          "situation_phase": "exploration",
+          "required_context": [
+            "goal",
+            "constraints"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "ambiguous_goal",
+              "to": "clarification",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "ask for goal"
+          ],
+          "evidence_basis": [
+            "Route decision is ask_user."
+          ],
+          "confidence": 0.7,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "ask_user",
+          "reason": "Clarify."
+        }
+      }
+    },
+    {
+      "id": "invalid_008_bad_context_link",
+      "category": "invalid_link",
+      "expected_valid": false,
+      "expected_codes": [
+        "CONTEXT_LINK_INVALID"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "domain",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "type",
+          "task_object": "object",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "",
+              "relation": ""
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 0.5,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "proceed",
+          "reason": "Proceed."
+        }
+      }
+    },
+    {
+      "id": "invalid_009_bad_mandalart_view",
+      "category": "invalid_optional_view",
+      "expected_valid": false,
+      "expected_codes": [
+        "MANDALART_VIEW_INVALID"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_situation_map"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "domain",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "type",
+          "task_object": "object",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "b",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 0.5,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": true,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "run_context_map",
+          "reason": "Use map."
+        }
+      }
+    },
+    {
+      "id": "invalid_010_bad_next_action",
+      "category": "invalid_next_action",
+      "expected_valid": false,
+      "expected_codes": [
+        "NEXT_ACTION_TYPE_INVALID",
+        "NEXT_ACTION_REASON_REQUIRED"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "domain",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "type",
+          "task_object": "object",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "b",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 0.5,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "unknown_action",
+          "reason": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_011_exploration_selection_outside_candidates",
+      "category": "invalid_exploration_selection",
+      "expected_valid": false,
+      "expected_codes": [
+        "EXPLORATION_SELECTION_NOT_IN_CANDIDATES"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_ipo"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "low"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "domain",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "type",
+          "task_object": "object",
+          "situation_phase": "exploration",
+          "required_context": [
+            "input"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "a",
+              "to": "b",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "focus"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 0.5,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "B_minimum_detail_required",
+            "activation_reason": "fixture",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습"
+              ],
+              "other_candidates": [],
+              "selected": "없는후보",
+              "reason": "Bad fixture.",
+              "evidence": "Bad fixture."
+            },
+            "stage_2_subcategory": {
+              "parent": "없는후보",
+              "default_candidates_by_start_area": {},
+              "default_candidates": [
+                "세부"
+              ],
+              "agent_added_candidates": [],
+              "selected": "세부",
+              "reason": "fixture",
+              "evidence": "fixture"
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "없는후보",
+                "세부"
+              ],
+              "example_candidates": [
+                "객체"
+              ],
+              "agent_generated_candidates": [],
+              "selected": "객체",
+              "reason": "fixture",
+              "evidence": "fixture"
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object"
+              ],
+              "axis_notes": {
+                "object": "fixture"
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "minimum_one_detail_per_activated_axis",
+              "axis_details": {
+                "object": [
+                  "detail"
+                ]
+              },
+              "usage_direction": "fixture"
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "proceed",
+          "reason": "Proceed."
+        }
+      }
+    },
+    {
+      "id": "invalid_012_exploration_axis_detail_missing",
+      "category": "invalid_exploration_detail",
+      "expected_valid": false,
+      "expected_codes": [
+        "EXPLORATION_AXIS_DETAILS_REQUIRED"
+      ],
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "risk_review"
+        },
+        "facet_classification": {
+          "risk_level": {
+            "value": "high"
+          }
+        }
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Problem",
+          "domain_area": "risk",
+          "situation_context": "context",
+          "actor_context": "actor",
+          "problem_type": "risk_review",
+          "task_object": "document",
+          "situation_phase": "review",
+          "required_context": [
+            "document"
+          ],
+          "missing_context": [
+            "criteria"
+          ],
+          "context_links": [
+            {
+              "from": "document",
+              "to": "risk",
+              "relation": "requires"
+            }
+          ],
+          "recommended_next_focus": [
+            "risk check"
+          ],
+          "evidence_basis": [
+            "evidence"
+          ],
+          "confidence": 0.7,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": false,
+              "center": "",
+              "branches": []
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "A_full_detail_required",
+            "activation_reason": "fixture",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "리스크"
+              ],
+              "other_candidates": [],
+              "selected": "리스크",
+              "reason": "fixture",
+              "evidence": "fixture"
+            },
+            "stage_2_subcategory": {
+              "parent": "리스크",
+              "default_candidates_by_start_area": {
+                "리스크": [
+                  "법무"
+                ]
+              },
+              "default_candidates": [
+                "법무"
+              ],
+              "agent_added_candidates": [],
+              "selected": "법무",
+              "reason": "fixture",
+              "evidence": "fixture"
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "리스크",
+                "법무"
+              ],
+              "example_candidates": [
+                "계약서"
+              ],
+              "agent_generated_candidates": [
+                "위험 조항"
+              ],
+              "selected": "위험 조항",
+              "reason": "fixture",
+              "evidence": "fixture"
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "rule"
+              ],
+              "axis_notes": {
+                "object": "fixture",
+                "rule": "fixture"
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "full_detail_required_for_activated_axes",
+              "axis_details": {
+                "object": [
+                  "risk clause"
+                ],
+                "rule": [
+                  "mark evidence",
+                  "avoid unsupported conclusions"
+                ]
+              },
+              "usage_direction": "fixture"
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "risk_review",
+          "reason": "Review risk."
+        }
+      }
+    },
+    {
+      "id": "invalid_013_missing_actor_scope",
+      "category": "invalid_actor_scope",
+      "expected_valid": false,
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_situation_map"
+        },
+        "facet_classification": {
+          "domain_context": {
+            "value": "learning_plan"
+          },
+          "problem_object": {
+            "value": "study_goal"
+          },
+          "user_intent": {
+            "value": "plan"
+          },
+          "definition_level": {
+            "value": "medium"
+          },
+          "risk_level": {
+            "value": "low"
+          },
+          "needed_output": {
+            "value": "study_plan"
+          }
+        },
+        "reference_lenses": [
+          "mandalart",
+          "mece"
+        ]
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Study plan needs structured expansion.",
+          "domain_area": "learning_and_self_development",
+          "situation_context": "The user has a goal but needs an organized plan.",
+          "actor_context": "Learner needs a manageable planning structure.",
+          "problem_type": "goal_decomposition",
+          "task_object": "study_plan",
+          "situation_phase": "design",
+          "required_context": [
+            "goal",
+            "current level",
+            "time budget",
+            "evaluation method"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "study_goal",
+              "to": "goal_decomposition",
+              "relation": "requires",
+              "evidence": "Planning requires breaking the goal into parts."
+            }
+          ],
+          "recommended_next_focus": [
+            "split topics",
+            "set time blocks",
+            "define feedback loop"
+          ],
+          "evidence_basis": [
+            "Route decision selected use_situation_map."
+          ],
+          "confidence": 0.74,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": true,
+              "center": "study_plan",
+              "branches": [
+                {
+                  "label": "goal",
+                  "reason": "Clarify target."
+                },
+                {
+                  "label": "time",
+                  "reason": "Set schedule."
+                },
+                {
+                  "label": "resources",
+                  "reason": "Choose materials."
+                }
+              ]
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "B_minimum_detail_required",
+            "activation_reason": "Experiment period always generates the exploration path.",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습",
+                "업무",
+                "직무",
+                "문서",
+                "데이터",
+                "개발",
+                "자동화",
+                "의사결정",
+                "리스크"
+              ],
+              "other_candidates": [],
+              "selected": "학습",
+              "reason": "The situation is a study plan.",
+              "evidence": "study_goal and study_plan are explicit."
+            },
+            "stage_2_subcategory": {
+              "parent": "학습",
+              "default_candidates_by_start_area": {
+                "학습": [
+                  "목표",
+                  "수준",
+                  "커리큘럼",
+                  "일정",
+                  "피드백",
+                  "결과물"
+                ]
+              },
+              "default_candidates": [
+                "목표",
+                "수준",
+                "커리큘럼",
+                "일정",
+                "피드백",
+                "결과물"
+              ],
+              "agent_added_candidates": [
+                "계획"
+              ],
+              "selected": "계획",
+              "reason": "The user needs an organized plan.",
+              "evidence": "The needed output is study_plan."
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "학습",
+                "계획"
+              ],
+              "example_candidates": [
+                "목표",
+                "현재 수준",
+                "시간",
+                "자료",
+                "결과물"
+              ],
+              "agent_generated_candidates": [
+                "학습 목표",
+                "일정",
+                "자료",
+                "피드백"
+              ],
+              "selected": "학습 목표",
+              "reason": "Goal decomposition is the first planning object.",
+              "evidence": "The route selected use_situation_map."
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "attribute",
+                "relationship",
+                "rule",
+                "context"
+              ],
+              "axis_notes": {
+                "type": "",
+                "object": "Study plan and goal.",
+                "attribute": "Level, time, and resource attributes.",
+                "relationship": "Goal connects to topics and schedule.",
+                "state": "",
+                "event": "",
+                "rule": "Plan must fit available time.",
+                "context": "Learner needs a manageable planning structure."
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "minimum_one_detail_per_activated_axis",
+              "axis_details": {
+                "object": [
+                  "study goal"
+                ],
+                "attribute": [
+                  "time budget"
+                ],
+                "relationship": [
+                  "goal -> topics -> schedule"
+                ],
+                "rule": [
+                  "plan must fit available time"
+                ],
+                "context": [
+                  "learner needs manageable structure"
+                ]
+              },
+              "usage_direction": "Use these details to turn the study goal into milestones."
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "run_context_map",
+          "target": "goal_decomposition",
+          "reason": "The context is ready for structured expansion."
+        }
+      },
+      "expected_codes": [
+        "ACTOR_SCOPE_REQUIRED"
+      ]
+    },
+    {
+      "id": "invalid_014_unknown_actor_without_missing_context",
+      "category": "invalid_actor_scope",
+      "expected_valid": false,
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_situation_map"
+        },
+        "facet_classification": {
+          "domain_context": {
+            "value": "learning_plan"
+          },
+          "problem_object": {
+            "value": "study_goal"
+          },
+          "user_intent": {
+            "value": "plan"
+          },
+          "definition_level": {
+            "value": "medium"
+          },
+          "risk_level": {
+            "value": "low"
+          },
+          "needed_output": {
+            "value": "study_plan"
+          }
+        },
+        "reference_lenses": [
+          "mandalart",
+          "mece"
+        ]
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Study plan needs structured expansion.",
+          "domain_area": "learning_and_self_development",
+          "situation_context": "The user has a goal but needs an organized plan.",
+          "actor_context": "Learner needs a manageable planning structure.",
+          "problem_type": "goal_decomposition",
+          "task_object": "study_plan",
+          "situation_phase": "design",
+          "required_context": [
+            "goal",
+            "current level",
+            "time budget",
+            "evaluation method"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "study_goal",
+              "to": "goal_decomposition",
+              "relation": "requires",
+              "evidence": "Planning requires breaking the goal into parts."
+            }
+          ],
+          "recommended_next_focus": [
+            "split topics",
+            "set time blocks",
+            "define feedback loop"
+          ],
+          "evidence_basis": [
+            "Route decision selected use_situation_map."
+          ],
+          "confidence": 0.74,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": true,
+              "center": "study_plan",
+              "branches": [
+                {
+                  "label": "goal",
+                  "reason": "Clarify target."
+                },
+                {
+                  "label": "time",
+                  "reason": "Set schedule."
+                },
+                {
+                  "label": "resources",
+                  "reason": "Choose materials."
+                }
+              ]
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "B_minimum_detail_required",
+            "activation_reason": "Experiment period always generates the exploration path.",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습",
+                "업무",
+                "직무",
+                "문서",
+                "데이터",
+                "개발",
+                "자동화",
+                "의사결정",
+                "리스크"
+              ],
+              "other_candidates": [],
+              "selected": "학습",
+              "reason": "The situation is a study plan.",
+              "evidence": "study_goal and study_plan are explicit."
+            },
+            "stage_2_subcategory": {
+              "parent": "학습",
+              "default_candidates_by_start_area": {
+                "학습": [
+                  "목표",
+                  "수준",
+                  "커리큘럼",
+                  "일정",
+                  "피드백",
+                  "결과물"
+                ]
+              },
+              "default_candidates": [
+                "목표",
+                "수준",
+                "커리큘럼",
+                "일정",
+                "피드백",
+                "결과물"
+              ],
+              "agent_added_candidates": [
+                "계획"
+              ],
+              "selected": "계획",
+              "reason": "The user needs an organized plan.",
+              "evidence": "The needed output is study_plan."
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "학습",
+                "계획"
+              ],
+              "example_candidates": [
+                "목표",
+                "현재 수준",
+                "시간",
+                "자료",
+                "결과물"
+              ],
+              "agent_generated_candidates": [
+                "학습 목표",
+                "일정",
+                "자료",
+                "피드백"
+              ],
+              "selected": "학습 목표",
+              "reason": "Goal decomposition is the first planning object.",
+              "evidence": "The route selected use_situation_map."
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "attribute",
+                "relationship",
+                "rule",
+                "context"
+              ],
+              "axis_notes": {
+                "type": "",
+                "object": "Study plan and goal.",
+                "attribute": "Level, time, and resource attributes.",
+                "relationship": "Goal connects to topics and schedule.",
+                "state": "",
+                "event": "",
+                "rule": "Plan must fit available time.",
+                "context": "Learner needs a manageable planning structure."
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "minimum_one_detail_per_activated_axis",
+              "axis_details": {
+                "object": [
+                  "study goal"
+                ],
+                "attribute": [
+                  "time budget"
+                ],
+                "relationship": [
+                  "goal -> topics -> schedule"
+                ],
+                "rule": [
+                  "plan must fit available time"
+                ],
+                "context": [
+                  "learner needs manageable structure"
+                ]
+              },
+              "usage_direction": "Use these details to turn the study goal into milestones."
+            }
+          },
+          "actor_scope": {
+            "primary_actor": "unknown",
+            "request_context": "unknown",
+            "decision_owner": "unknown",
+            "affected_parties": [
+              "user"
+            ],
+            "evidence": "Fixture intentionally leaves ownership unresolved.",
+            "confidence": 0.4,
+            "missing_context": [],
+            "classification_self_check": {
+              "minimum_evidence_used": [
+                "Fixture intentionally leaves ownership unresolved."
+              ],
+              "competing_classifications": [
+                "individual",
+                "company",
+                "team"
+              ],
+              "why_not_other_actor_scope": "Actor ownership is not explicitly supported, so unknown is safer than guessing.",
+              "could_be_wrong_if": [
+                "additional ownership evidence may identify the actor."
+              ]
+            }
+          }
+        },
+        "next_action": {
+          "action_type": "run_context_map",
+          "target": "goal_decomposition",
+          "reason": "The context is ready for structured expansion."
+        }
+      },
+      "expected_codes": [
+        "ACTOR_SCOPE_UNKNOWN_REQUIRES_MISSING_CONTEXT"
+      ]
+    },
+    {
+      "id": "invalid_015_missing_actor_self_check",
+      "category": "invalid_actor_scope",
+      "expected_valid": false,
+      "router_filled": {
+        "route_decision": {
+          "route_status": "selected",
+          "selected_route": "use_situation_map"
+        },
+        "facet_classification": {
+          "domain_context": {
+            "value": "learning_plan"
+          },
+          "problem_object": {
+            "value": "study_goal"
+          },
+          "user_intent": {
+            "value": "plan"
+          },
+          "definition_level": {
+            "value": "medium"
+          },
+          "risk_level": {
+            "value": "low"
+          },
+          "needed_output": {
+            "value": "study_plan"
+          }
+        },
+        "reference_lenses": [
+          "mandalart",
+          "mece"
+        ]
+      },
+      "context_filled": {
+        "situation_context_map": {
+          "central_problem": "Study plan needs structured expansion.",
+          "domain_area": "learning_and_self_development",
+          "situation_context": "The user has a goal but needs an organized plan.",
+          "actor_context": "Learner needs a manageable planning structure.",
+          "problem_type": "goal_decomposition",
+          "task_object": "study_plan",
+          "situation_phase": "design",
+          "required_context": [
+            "goal",
+            "current level",
+            "time budget",
+            "evaluation method"
+          ],
+          "missing_context": [],
+          "context_links": [
+            {
+              "from": "study_goal",
+              "to": "goal_decomposition",
+              "relation": "requires",
+              "evidence": "Planning requires breaking the goal into parts."
+            }
+          ],
+          "recommended_next_focus": [
+            "split topics",
+            "set time blocks",
+            "define feedback loop"
+          ],
+          "evidence_basis": [
+            "Route decision selected use_situation_map."
+          ],
+          "confidence": 0.74,
+          "optional_views": {
+            "mandalart_view": {
+              "enabled": true,
+              "center": "study_plan",
+              "branches": [
+                {
+                  "label": "goal",
+                  "reason": "Clarify target."
+                },
+                {
+                  "label": "time",
+                  "reason": "Set schedule."
+                },
+                {
+                  "label": "resources",
+                  "reason": "Choose materials."
+                }
+              ]
+            }
+          },
+          "experimental_context_exploration_path": {
+            "enabled": true,
+            "mode": "B_minimum_detail_required",
+            "activation_reason": "Experiment period always generates the exploration path.",
+            "stage_1_start_area": {
+              "default_candidates": [
+                "개인",
+                "학습",
+                "업무",
+                "직무",
+                "문서",
+                "데이터",
+                "개발",
+                "자동화",
+                "의사결정",
+                "리스크"
+              ],
+              "other_candidates": [],
+              "selected": "학습",
+              "reason": "The situation is a study plan.",
+              "evidence": "study_goal and study_plan are explicit."
+            },
+            "stage_2_subcategory": {
+              "parent": "학습",
+              "default_candidates_by_start_area": {
+                "학습": [
+                  "목표",
+                  "수준",
+                  "커리큘럼",
+                  "일정",
+                  "피드백",
+                  "결과물"
+                ]
+              },
+              "default_candidates": [
+                "목표",
+                "수준",
+                "커리큘럼",
+                "일정",
+                "피드백",
+                "결과물"
+              ],
+              "agent_added_candidates": [
+                "계획"
+              ],
+              "selected": "계획",
+              "reason": "The user needs an organized plan.",
+              "evidence": "The needed output is study_plan."
+            },
+            "stage_3_context_object": {
+              "parent_path": [
+                "학습",
+                "계획"
+              ],
+              "example_candidates": [
+                "목표",
+                "현재 수준",
+                "시간",
+                "자료",
+                "결과물"
+              ],
+              "agent_generated_candidates": [
+                "학습 목표",
+                "일정",
+                "자료",
+                "피드백"
+              ],
+              "selected": "학습 목표",
+              "reason": "Goal decomposition is the first planning object.",
+              "evidence": "The route selected use_situation_map."
+            },
+            "stage_4_primary_structure": {
+              "base_axes": [
+                "type",
+                "object",
+                "attribute",
+                "relationship",
+                "state",
+                "event",
+                "rule",
+                "context"
+              ],
+              "activated_axes": [
+                "object",
+                "attribute",
+                "relationship",
+                "rule",
+                "context"
+              ],
+              "axis_notes": {
+                "type": "",
+                "object": "Study plan and goal.",
+                "attribute": "Level, time, and resource attributes.",
+                "relationship": "Goal connects to topics and schedule.",
+                "state": "",
+                "event": "",
+                "rule": "Plan must fit available time.",
+                "context": "Learner needs a manageable planning structure."
+              }
+            },
+            "stage_5_detail_expansion": {
+              "detail_policy": "minimum_one_detail_per_activated_axis",
+              "axis_details": {
+                "object": [
+                  "study goal"
+                ],
+                "attribute": [
+                  "time budget"
+                ],
+                "relationship": [
+                  "goal -> topics -> schedule"
+                ],
+                "rule": [
+                  "plan must fit available time"
+                ],
+                "context": [
+                  "learner needs manageable structure"
+                ]
+              },
+              "usage_direction": "Use these details to turn the study goal into milestones."
+            }
+          },
+          "actor_scope": {
+            "primary_actor": "individual",
+            "request_context": "learning_goal",
+            "decision_owner": "user",
+            "affected_parties": [
+              "user"
+            ],
+            "evidence": "The route selected a study plan and the situation is framed as a learner planning their own learning goal.",
+            "confidence": 0.82,
+            "missing_context": []
+          }
+        },
+        "next_action": {
+          "action_type": "run_context_map",
+          "target": "goal_decomposition",
+          "reason": "The context is ready for structured expansion."
+        }
+      },
+      "expected_codes": [
+        "ACTOR_SCOPE_SELF_CHECK_REQUIRED"
+      ]
+    }
+  ]
+}

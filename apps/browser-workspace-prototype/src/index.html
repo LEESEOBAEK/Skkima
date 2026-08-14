@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>쓰끼마</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./local-environment.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="titlebar" aria-label="애플리케이션 제목 표시줄">
+        <div class="titlebar-leading">
+          <button
+            class="icon-button sidebar-toggle"
+            id="sidebar-toggle"
+            type="button"
+            data-action="toggle-sidebar"
+            title="사이드 패널 고정 (Ctrl+B)"
+            aria-label="사이드 패널"
+            aria-controls="project-sidebar"
+            aria-pressed="false"
+          >
+            <img src="./icons/panel-left.svg" alt="" />
+          </button>
+          <nav class="history-controls" aria-label="탐색 기록">
+            <button
+              class="icon-button"
+              id="history-back"
+              type="button"
+              title="뒤로 (Alt+왼쪽 화살표)"
+              aria-label="뒤로"
+              disabled
+            >
+              <img src="./icons/arrow-left.svg" alt="" />
+            </button>
+            <button
+              class="icon-button"
+              id="history-forward"
+              type="button"
+              title="앞으로 (Alt+오른쪽 화살표)"
+              aria-label="앞으로"
+              disabled
+            >
+              <img src="./icons/arrow-right.svg" alt="" />
+            </button>
+          </nav>
+        </div>
+
+        <nav class="menu-bar" aria-label="애플리케이션 메뉴">
+          <div class="menu">
+            <button class="menu-trigger" type="button" data-menu="file" aria-expanded="false">
+              파일
+            </button>
+            <div class="menu-popover" data-menu-panel="file" role="menu">
+              <button type="button" role="menuitem" data-action="new-project">
+                <span>새 프로젝트 만들기</span><kbd>Ctrl+Shift+N</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="open-project-folder">
+                <span>프로젝트 폴더 열기</span><kbd>Ctrl+O</kbd>
+              </button>
+              <div class="menu-separator" role="separator"></div>
+              <button type="button" role="menuitem" data-action="new-task">
+                <span>새 작업</span><kbd>Ctrl+N</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="show-workspaces">
+                <span>작업 공간 보기</span><kbd>Ctrl+1</kbd>
+              </button>
+              <div class="menu-separator" role="separator"></div>
+              <button type="button" role="menuitem" data-action="close-window">
+                <span>창 닫기</span><kbd>Alt+F4</kbd>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu">
+            <button class="menu-trigger" type="button" data-menu="edit" aria-expanded="false">
+              편집
+            </button>
+            <div class="menu-popover" data-menu-panel="edit" role="menu">
+              <button type="button" role="menuitem" data-action="navigate-back">
+                <span>이전 선택</span><kbd>Alt+←</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="navigate-forward">
+                <span>다음 선택</span><kbd>Alt+→</kbd>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu">
+            <button class="menu-trigger" type="button" data-menu="view" aria-expanded="false">
+              보기
+            </button>
+            <div class="menu-popover" data-menu-panel="view" role="menu">
+              <button type="button" role="menuitem" data-action="zoom-in">
+                <span>확대</span><kbd>Ctrl++</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="zoom-out">
+                <span>축소</span><kbd>Ctrl+-</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="zoom-reset">
+                <span>배율 초기화</span><kbd>Ctrl+0</kbd>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu">
+            <button class="menu-trigger" type="button" data-menu="help" aria-expanded="false">
+              도움말
+            </button>
+            <div class="menu-popover" data-menu-panel="help" role="menu">
+              <button type="button" role="menuitem" data-action="show-shortcuts">
+                <span>키보드 단축키</span><kbd>Ctrl+/</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="show-about">
+                <span>쓰끼마 정보</span>
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        <div class="title-drag-region" data-tauri-drag-region></div>
+
+        <div class="window-controls" aria-label="창 제어">
+          <button
+            class="window-button"
+            id="window-minimize"
+            type="button"
+            title="최소화"
+            aria-label="최소화"
+          >
+            <img src="./icons/minus.svg" alt="" />
+          </button>
+          <button
+            class="window-button"
+            id="window-maximize"
+            type="button"
+            title="최대화"
+            aria-label="최대화"
+          >
+            <img src="./icons/square.svg" alt="" />
+          </button>
+          <button
+            class="window-button close"
+            id="window-close"
+            type="button"
+            title="닫기"
+            aria-label="닫기"
+          >
+            <img src="./icons/x.svg" alt="" />
+          </button>
+        </div>
+      </header>
+
+      <div class="shell-body">
+        <div class="sidebar-edge" id="sidebar-edge" aria-hidden="true"></div>
+
+        <aside
+          class="project-sidebar"
+          id="project-sidebar"
+          aria-label="프로젝트와 작업 세션"
+          aria-hidden="true"
+        >
+          <header class="sidebar-header">
+            <div class="sidebar-brand-logo" aria-label="쓰끼마">
+              <img src="./brand-logo.png" alt="" />
+            </div>
+            <button
+              class="sidebar-search-button"
+              type="button"
+              data-action="open-global-search"
+              title="프로젝트와 작업 검색 (Ctrl+P)"
+              aria-label="프로젝트와 작업 검색"
+            >
+              <img src="./icons/search.svg" alt="" />
+            </button>
+          </header>
+
+          <div class="project-entry-actions">
+            <button
+              class="open-project-button"
+              type="button"
+              data-action="new-project"
+            >
+              <img src="./icons/square-pen.svg" alt="" />
+              <span>새 프로젝트 만들기</span>
+            </button>
+            <button
+              class="open-project-button"
+              type="button"
+              data-action="open-project-folder"
+            >
+              <img src="./icons/folder-open.svg" alt="" />
+              <span>기존 프로젝트 열기</span>
+            </button>
+            <button
+              class="open-project-button"
+              type="button"
+              data-action="show-extensions"
+            >
+              <img src="./icons/plug.svg" alt="" />
+              <span>플러그인</span>
+            </button>
+            <button
+              class="open-project-button"
+              type="button"
+              data-action="show-browser-workspace"
+            >
+              <img src="./icons/globe.svg" alt="" />
+              <span>브라우저</span>
+            </button>
+          </div>
+
+          <div class="sidebar-scroll">
+            <section class="project-section" id="pinned-section">
+              <h2>고정한 프로젝트</h2>
+              <div id="pinned-projects"></div>
+            </section>
+
+            <section class="project-section" id="recent-section">
+              <h2>최근 프로젝트</h2>
+              <div id="recent-projects"></div>
+            </section>
+
+          </div>
+
+          <footer class="sidebar-footer">
+            <button
+              class="local-status"
+              id="local-environment-trigger"
+              type="button"
+              data-action="show-local-environment"
+              title="이 PC의 시스템과 개발 도구 확인"
+              aria-label="로컬 개발 환경 확인"
+            >
+              <span aria-hidden="true"></span>
+              <div>
+                <strong>로컬 앱 준비됨</strong>
+                <small>시스템과 개발 도구 확인</small>
+              </div>
+            </button>
+            <button
+              class="sidebar-help-button"
+              type="button"
+              data-action="show-settings"
+              title="설정"
+              aria-label="설정"
+            >
+              <img src="./icons/settings.svg" alt="" />
+            </button>
+          </footer>
+        </aside>
+
+        <div class="content-shell">
+          <section class="contextbar" aria-label="현재 작업">
+        <div class="contextbar-leading">
+          <button
+            class="context-icon-button"
+            type="button"
+            data-action="new-task"
+            title="새 작업 (Ctrl+N)"
+            aria-label="새 작업"
+          >
+            <img src="./icons/square-pen.svg" alt="" />
+          </button>
+
+          <div class="context-separator" aria-hidden="true"></div>
+
+          <div class="context-identity">
+            <img id="context-identity-icon" src="./icons/folder.svg" alt="" />
+            <strong id="context-title">작업 공간</strong>
+            <span id="task-count" aria-label="생성한 작업 수">(0)</span>
+          </div>
+
+          <div class="menu context-menu">
+            <button
+              class="context-icon-button menu-trigger"
+              type="button"
+              data-menu="task"
+              title="작업 메뉴"
+              aria-label="작업 메뉴"
+              aria-expanded="false"
+            >
+              <img src="./icons/ellipsis.svg" alt="" />
+            </button>
+            <div class="menu-popover task-popover" data-menu-panel="task" role="menu">
+              <button type="button" role="menuitem" data-action="rename-task">
+                <span>이름 바꾸기</span>
+              </button>
+              <button type="button" role="menuitem" data-action="show-task-info">
+                <span>작업 정보 보기</span>
+              </button>
+              <div class="menu-separator" role="separator"></div>
+              <button type="button" role="menuitem" data-action="show-workspaces">
+                <span>작업 공간으로 이동</span><kbd>Ctrl+1</kbd>
+              </button>
+              <button type="button" role="menuitem" data-action="new-task">
+                <span>새 작업</span><kbd>Ctrl+N</kbd>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="contextbar-actions">
+          <button
+            class="context-icon-button"
+            type="button"
+            data-action="show-task-info"
+            title="작업 정보"
+            aria-label="작업 정보"
+          >
+            <img src="./icons/list-checks.svg" alt="" />
+          </button>
+          <button
+            class="context-icon-button"
+            id="browser-panel-toggle"
+            type="button"
+            data-action="toggle-browser-panel"
+            title="오른쪽 도구"
+            aria-label="오른쪽 도구"
+            aria-pressed="false"
+          >
+            <img src="./icons/globe.svg" alt="" />
+          </button>
+          <button
+            class="context-icon-button"
+            id="browser-focus-toggle"
+            type="button"
+            data-action="toggle-browser-focus"
+            title="브라우저 집중 보기"
+            aria-label="브라우저 집중 보기"
+            aria-pressed="false"
+          >
+            <img src="./icons/columns-2.svg" alt="" />
+          </button>
+          <button
+            class="context-icon-button"
+            id="split-toggle"
+            type="button"
+            data-action="toggle-split"
+            title="상세 패널"
+            aria-label="상세 패널"
+            aria-pressed="false"
+          >
+            <img src="./icons/columns-2.svg" alt="" />
+          </button>
+        </div>
+          </section>
+
+          <div class="workspace-frame">
+            <main class="workbench">
+              <section class="empty-surface" id="empty-surface" aria-live="polite">
+                <div class="surface-mark" aria-hidden="true">
+                  <img id="surface-icon" src="./icons/folder.svg" alt="" />
+                </div>
+                <h2 id="surface-title">작업 공간</h2>
+                <p id="surface-description">프로젝트 폴더를 열어 작업 세션을 시작하세요.</p>
+                <div class="empty-actions" id="empty-actions" data-mode="empty">
+                  <button type="button" data-action="new-project">
+                    <img src="./icons/square-pen.svg" alt="" />
+                    새 프로젝트 만들기
+                  </button>
+                  <button type="button" data-action="open-project-folder">
+                    <img src="./icons/folder-open.svg" alt="" />
+                    기존 프로젝트 열기
+                  </button>
+                  <button type="button" data-action="new-task">
+                    <img src="./icons/square-pen.svg" alt="" />
+                    새 작업
+                  </button>
+                </div>
+              </section>
+
+              <section class="workflow-surface" id="workflow-surface" hidden>
+                <header class="workflow-heading">
+                  <div class="workflow-heading-copy">
+                    <span>WORK SESSION</span>
+                    <h2 id="workflow-title"></h2>
+                    <p id="workflow-description"></p>
+                  </div>
+                  <div class="workflow-heading-actions">
+                    <div class="workflow-badges" aria-label="현재 작업 상태">
+                      <span id="workflow-status-badge"></span>
+                      <span id="workflow-validation-badge"></span>
+                    </div>
+                    <button
+                      type="button"
+                      class="workflow-launch-button"
+                      id="workflow-launch-button"
+                      data-action="launch-workflow-cli"
+                    >
+                      CLI 실행
+                    </button>
+                    <button
+                      type="button"
+                      class="workflow-detail-button"
+                      data-action="show-workflow-details"
+                    >
+                      실행 정보
+                    </button>
+                  </div>
+                </header>
+
+                <button
+                  type="button"
+                  class="workflow-execution-bar"
+                  id="workflow-execution-bar"
+                  data-action="show-cli-execution"
+                  hidden
+                >
+                  <span class="workflow-execution-dot" aria-hidden="true"></span>
+                  <strong id="workflow-execution-status"></strong>
+                  <span id="workflow-execution-meta"></span>
+                  <span class="workflow-execution-more">실행 기록</span>
+                </button>
+
+                <dl class="workflow-summary-strip" aria-label="작업 운영 요약">
+                  <button type="button" data-inspector-kind="summary" data-summary-focus="status">
+                    <dt>상태</dt>
+                    <dd id="workflow-summary-status"></dd>
+                  </button>
+                  <button type="button" data-inspector-kind="summary" data-summary-focus="validation">
+                    <dt>검증</dt>
+                    <dd id="workflow-summary-validation"></dd>
+                  </button>
+                  <button type="button" data-inspector-kind="deliverables">
+                    <dt>산출물</dt>
+                    <dd id="workflow-summary-deliverables"></dd>
+                  </button>
+                  <button type="button" data-inspector-kind="summary" data-summary-focus="next-action">
+                    <dt>다음 행동</dt>
+                    <dd id="workflow-summary-next-action"></dd>
+                  </button>
+                </dl>
+
+                <nav class="workflow-tabs" aria-label="작업 세션 보기">
+                  <button type="button" data-workflow-view="flow" aria-selected="true">
+                    작업 흐름
+                  </button>
+                  <button type="button" data-workflow-view="review" aria-selected="false">
+                    검토
+                  </button>
+                  <button type="button" data-workflow-view="deliverables" aria-selected="false">
+                    산출물 <span id="workflow-deliverable-count"></span>
+                  </button>
+                  <button type="button" data-workflow-view="history" aria-selected="false">
+                    이력
+                  </button>
+                </nav>
+
+                <div class="workflow-views">
+                  <section class="workflow-view" data-workflow-panel="flow">
+                    <div class="workflow-conversation" id="workflow-conversation"></div>
+                  </section>
+
+                  <section class="workflow-view" data-workflow-panel="review" hidden>
+                    <div class="workflow-review-grid">
+                      <article>
+                        <span>완료 상태</span>
+                        <strong id="workflow-status"></strong>
+                        <p>현재 요청의 처리 상태입니다.</p>
+                      </article>
+                      <article>
+                        <span>검증 결과</span>
+                        <strong id="workflow-validation"></strong>
+                        <p>등록된 이행 검증 결과입니다.</p>
+                      </article>
+                      <article>
+                        <span>근거 상태</span>
+                        <strong id="workflow-evidence"></strong>
+                        <p>현재 판단을 확정할 근거의 충족 상태입니다.</p>
+                      </article>
+                      <article class="workflow-review-wide">
+                        <span>다음 행동</span>
+                        <strong id="workflow-next-action"></strong>
+                        <p id="workflow-review-note"></p>
+                      </article>
+                      <article class="workflow-review-wide">
+                        <span>검토 필요 항목</span>
+                        <ul id="workflow-validation-needed" class="workflow-validation-needed"></ul>
+                      </article>
+                      <article id="workflow-failure-card" class="workflow-review-wide" hidden>
+                        <span>실패 원인</span>
+                        <strong id="workflow-failure-reason"></strong>
+                      </article>
+                      <article id="workflow-error-surface-card" class="workflow-review-wide" hidden>
+                        <span>오류 분류</span>
+                        <strong id="workflow-error-surface-label"></strong>
+                        <p id="workflow-error-surface-code"></p>
+                      </article>
+                      <article id="workflow-recovery-card" class="workflow-review-wide" hidden>
+                        <span>복구 행동</span>
+                        <strong id="workflow-recovery-action"></strong>
+                      </article>
+                    </div>
+                  </section>
+
+                  <section class="workflow-view" data-workflow-panel="deliverables" hidden>
+                    <div class="workflow-file-list" id="workflow-file-list"></div>
+                  </section>
+
+                  <section class="workflow-view" data-workflow-panel="history" hidden>
+                    <ol class="workflow-history-list" id="workflow-history-list"></ol>
+                  </section>
+                </div>
+              </section>
+
+              <section class="extension-hub" id="extension-hub" hidden></section>
+
+              <section class="browser-workspace" id="browser-workspace" hidden>
+                <section class="browser-tool-launcher" id="browser-tool-launcher">
+                  <header>
+                    <div>
+                      <span>오른쪽 도구</span>
+                      <strong>작업 화면과 함께 사용할 도구를 선택하세요.</strong>
+                    </div>
+                    <button
+                      type="button"
+                      data-action="close-browser-panel"
+                      title="오른쪽 도구 닫기"
+                      aria-label="오른쪽 도구 닫기"
+                    >
+                      <img src="./icons/x.svg" alt="" />
+                    </button>
+                  </header>
+                  <div class="browser-tool-options">
+                    <button type="button" disabled>
+                      <img src="./icons/file-text.svg" alt="" />
+                      <span><strong>파일</strong><small>준비 중</small></span>
+                    </button>
+                    <button type="button" disabled>
+                      <img src="./icons/square-pen.svg" alt="" />
+                      <span><strong>사이트 채팅</strong><small>준비 중</small></span>
+                    </button>
+                    <button type="button" data-browser-action="open-browser">
+                      <img src="./icons/globe.svg" alt="" />
+                      <span><strong>브라우저</strong><small>직접 조작 가능한 웹 화면</small></span>
+                    </button>
+                    <button type="button" disabled>
+                      <img src="./icons/square.svg" alt="" />
+                      <span><strong>터미널</strong><small>준비 중</small></span>
+                    </button>
+                  </div>
+                </section>
+
+                <header class="browser-toolbar">
+                  <div class="browser-navigation" aria-label="브라우저 이동">
+                    <button type="button" data-browser-action="back" title="뒤로" aria-label="뒤로">
+                      <img src="./icons/arrow-left.svg" alt="" />
+                    </button>
+                    <button type="button" data-browser-action="forward" title="앞으로" aria-label="앞으로">
+                      <img src="./icons/arrow-right.svg" alt="" />
+                    </button>
+                    <button type="button" data-browser-action="reload" title="새로 고침" aria-label="새로 고침">
+                      <img src="./icons/rotate-cw.svg" alt="" />
+                    </button>
+                  </div>
+                  <form class="browser-address-form" id="browser-address-form">
+                    <img src="./icons/globe.svg" alt="" />
+                    <input
+                      id="browser-address"
+                      type="text"
+                      inputmode="url"
+                      autocomplete="off"
+                      spellcheck="false"
+                      value="https://example.com/"
+                      aria-label="웹 주소"
+                    />
+                  </form>
+                  <div class="browser-zoom-controls" aria-label="페이지 배율">
+                    <button type="button" data-browser-action="zoom-out" title="페이지 축소" aria-label="페이지 축소">−</button>
+                    <button type="button" data-browser-action="zoom-reset" id="browser-zoom-value" title="기본 배율로 복원">100%</button>
+                    <button type="button" data-browser-action="zoom-in" title="페이지 확대" aria-label="페이지 확대">+</button>
+                  </div>
+                  <button
+                    class="browser-viewport-button"
+                    type="button"
+                    data-browser-action="toggle-viewport"
+                    aria-pressed="true"
+                    title="데스크톱 화면 폭 사용 중. 반응형 화면으로 전환"
+                  >
+                    <img src="./icons/square.svg" alt="" />
+                    <span>1280</span>
+                  </button>
+                  <button
+                    class="browser-inspect-button"
+                    type="button"
+                    data-browser-action="inspect-page"
+                    title="페이지 읽기"
+                    aria-label="현재 페이지 읽기"
+                  >
+                    <img src="./icons/list-checks.svg" alt="" />
+                  </button>
+                  <button
+                    class="browser-history-button"
+                    type="button"
+                    data-action="show-browser-evidence-history"
+                    title="브라우저 근거 이력"
+                    aria-label="브라우저 근거 이력"
+                  >
+                    <img src="./icons/archive.svg" alt="" />
+                  </button>
+                  <button
+                    class="browser-external-button"
+                    type="button"
+                    data-browser-action="external"
+                    title="외부 Chrome에서 열기"
+                  >
+                    <img src="./icons/external-link.svg" alt="" />
+                    <span>Chrome</span>
+                  </button>
+                  <button
+                    class="browser-close-button"
+                    type="button"
+                    data-action="close-browser-panel"
+                    title="브라우저 패널 닫기"
+                    aria-label="브라우저 패널 닫기"
+                  >
+                    <img src="./icons/x.svg" alt="" />
+                  </button>
+                </header>
+
+                <div class="browser-context-strip">
+                  <p id="browser-error" hidden></p>
+                </div>
+
+                <div class="browser-webview-mount" id="browser-webview-mount" aria-label="조작 가능한 웹 페이지 영역">
+                  <div class="browser-mount-placeholder">
+                    <img src="./icons/globe.svg" alt="" />
+                    <strong>브라우저를 준비하고 있습니다.</strong>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            <div
+              class="browser-resize-handle"
+              id="browser-resize-handle"
+              role="separator"
+              aria-label="브라우저 패널 너비 조절"
+              aria-orientation="vertical"
+              tabindex="0"
+            ></div>
+
+            <aside
+              class="companion-pane inspector-pane"
+              id="inspector-pane"
+              aria-label="선택 항목 상세 정보"
+              aria-hidden="true"
+            >
+              <div
+                class="inspector-resize-handle"
+                id="inspector-resize-handle"
+                role="separator"
+                aria-label="상세 패널 너비 조절"
+                aria-orientation="vertical"
+                tabindex="0"
+              ></div>
+              <header class="inspector-header">
+                <div>
+                  <span id="inspector-eyebrow">DETAIL</span>
+                  <h2 id="inspector-title">상세 정보</h2>
+                </div>
+                <button
+                  class="context-icon-button"
+                  type="button"
+                  data-action="close-inspector"
+                  title="상세 패널 닫기"
+                  aria-label="상세 패널 닫기"
+                >
+                  <img src="./icons/x.svg" alt="" />
+                </button>
+              </header>
+              <div class="inspector-content" id="inspector-content"></div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-backdrop" id="search-backdrop" hidden>
+      <section
+        class="global-search"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="global-search-title"
+      >
+        <header class="global-search-header">
+          <img src="./icons/search.svg" alt="" />
+          <label class="sr-only" id="global-search-title" for="global-search-input">
+            프로젝트와 작업 검색
+          </label>
+          <input
+            id="global-search-input"
+            type="search"
+            placeholder="프로젝트 또는 작업 검색"
+            autocomplete="off"
+          />
+          <kbd>Esc</kbd>
+        </header>
+        <div
+          class="global-search-results"
+          id="global-search-results"
+          role="listbox"
+          aria-label="검색 결과"
+        ></div>
+      </section>
+    </div>
+
+    <div
+      class="surface-context-menu"
+      id="surface-context-menu"
+      role="menu"
+      aria-label="화면 메뉴"
+      hidden
+    ></div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <section
+        class="dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dialog-title"
+      >
+        <header>
+          <h2 id="dialog-title"></h2>
+          <button class="icon-button" id="dialog-close" type="button" aria-label="닫기">
+            <img src="./icons/x.svg" alt="" />
+          </button>
+        </header>
+        <div class="dialog-body" id="dialog-body"></div>
+      </section>
+    </div>
+  </body>
+</html>

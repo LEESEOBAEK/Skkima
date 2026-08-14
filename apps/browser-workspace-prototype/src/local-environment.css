@@ -1,0 +1,211 @@
+.dialog.dialog-environment .dialog-body {
+  scrollbar-width: none;
+}
+
+.dialog.dialog-environment .dialog-body::-webkit-scrollbar {
+  display: none;
+}
+
+.environment-dialog-content {
+  display: grid;
+  gap: 18px;
+}
+
+.environment-summary {
+  margin: 0;
+  color: var(--muted);
+}
+
+.environment-section {
+  min-width: 0;
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--border);
+}
+
+.environment-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 9px;
+}
+
+.environment-section-heading h3 {
+  margin: 0;
+  color: #232321;
+  font-size: 13px;
+}
+
+.environment-section-heading span {
+  color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.environment-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid #e7e7e3;
+}
+
+.environment-detail {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+  padding: 9px 5px;
+  border-bottom: 1px solid #e7e7e3;
+}
+
+.environment-detail:nth-child(odd) {
+  padding-right: 14px;
+}
+
+.environment-detail.wide {
+  grid-column: 1 / -1;
+}
+
+.environment-detail dt,
+.environment-detail dd {
+  min-width: 0;
+  margin: 0;
+}
+
+.environment-detail dt {
+  color: var(--muted);
+}
+
+.environment-detail dd {
+  overflow-wrap: anywhere;
+  color: #232321;
+  font-weight: 600;
+}
+
+.environment-tools {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.environment-tool {
+  display: grid;
+  grid-template-columns: 8px 92px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 35px;
+  border-bottom: 1px solid #e7e7e3;
+}
+
+.environment-tool-state {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a6a6a0;
+}
+
+.environment-tool-state.available {
+  background: #3f8d68;
+}
+
+.environment-tool-state.timeout {
+  background: #b98a35;
+}
+
+.environment-tool-state.error {
+  background: #b85b55;
+}
+
+.environment-tool strong,
+.environment-tool-version {
+  min-width: 0;
+}
+
+.environment-tool strong {
+  color: #232321;
+  font-size: 11px;
+}
+
+.environment-tool-version {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.environment-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.environment-footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.environment-footer button,
+.environment-error button {
+  flex: 0 0 auto;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #ffffff;
+  color: #232321;
+  cursor: pointer;
+}
+
+.environment-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 90px;
+}
+
+.environment-loading > span {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #cbc9df;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: environment-spin 700ms linear infinite;
+}
+
+.environment-loading strong,
+.environment-loading p,
+.environment-error strong,
+.environment-error p {
+  display: block;
+  margin: 0;
+}
+
+.environment-loading p,
+.environment-error p {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.environment-error button {
+  margin-top: 12px;
+}
+
+@keyframes environment-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .environment-details,
+  .environment-tools {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

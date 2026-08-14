@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "쓰끼마",
+  "version": "0.1.8",
+  "identifier": "com.seobaek.schema-workflow",
+  "mainBinaryName": "Skkima",
+  "build": {
+    "frontendDist": "../src"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "쓰끼마",
+        "width": 960,
+        "height": 640,
+        "minWidth": 440,
+        "minHeight": 560,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": false,
+        "backgroundColor": "#f7f7f7"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "publisher": "LEESEOBAEK",
+    "category": "DeveloperTool",
+    "shortDescription": "Schema Workflow Windows desktop application",
+    "longDescription": "쓰끼마는 Schema Workflow 프로젝트와 Run 기록, AI CLI 및 프로젝트별 스킬을 한곳에서 관리하는 Windows 데스크톱 애플리케이션입니다.",
+    "license": "MIT",
+    "icon": [
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": [
+          "Korean",
+          "English"
+        ],
+        "displayLanguageSelector": false,
+        "installerHooks": "windows/nsis-hooks.nsh",
+        "installerIcon": "icons/icon.ico",
+        "uninstallerIcon": "icons/icon.ico",
+        "startMenuFolder": "쓰끼마"
+      }
+    }
+  }
+}

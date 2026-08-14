@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skkima Bridge</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <main class="bridge-shell">
+      <header class="page-header">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true"><span class="lock-mark"></span></span>
+          <div>
+            <p class="eyebrow">SKKIMA BRIDGE</p>
+            <h1>Chrome 연결</h1>
+          </div>
+        </div>
+        <span class="status-dot" id="status-dot" aria-label="연결 상태"></span>
+      </header>
+
+      <section class="connection-stage" aria-label="Skkima Bridge 연결 상태">
+        <p class="stage-caption">LOCAL BROWSER ADAPTER</p>
+        <div class="connection-orbit" aria-hidden="true">
+          <span class="orbit orbit-outer"></span>
+          <span class="orbit orbit-middle"></span>
+          <span class="orbit orbit-inner"></span>
+          <div class="connection-core">
+            <span class="lock-mark lock-mark-large"></span>
+            <strong id="bridge-mode-label">ON</strong>
+          </div>
+        </div>
+        <p class="stage-title" id="bridge-stage-title">Skkima Bridge가 준비되었습니다</p>
+        <p class="stage-description" id="bridge-stage-description">사용자가 요청할 때만 현재 페이지를 읽습니다.</p>
+      </section>
+
+      <section class="connection-control" aria-label="브리지 켜기 및 끄기">
+        <button class="bridge-toggle" id="bridge-toggle" type="button" aria-pressed="true">
+          <span class="toggle-knob" aria-hidden="true"></span>
+          <span class="sr-only">브리지 연결 전환</span>
+        </button>
+        <div>
+          <strong id="bridge-state">읽기 연결 준비됨</strong>
+          <p>페이지 읽기만 허용됩니다.</p>
+        </div>
+      </section>
+
+      <section class="privacy-note">
+        <strong>읽기 전용 보호</strong>
+        <p>쿠키, 비밀번호, 로그인 정보는 읽지 않습니다. 페이지 조작도 실행하지 않습니다.</p>
+      </section>
+
+      <section class="context-card" aria-label="현재 페이지 정보">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CURRENT PAGE</p>
+            <h2>현재 페이지</h2>
+          </div>
+          <span class="context-badge" id="context-badge">대기 중</span>
+        </div>
+        <div class="context-row">
+          <span>페이지</span>
+          <strong id="page-title">아직 읽지 않음</strong>
+        </div>
+        <div class="context-row">
+          <span>주소</span>
+          <code id="page-url">-</code>
+        </div>
+        <div class="context-row context-row-wide">
+          <span>선택 영역</span>
+          <p id="selection-text">-</p>
+        </div>
+        <div class="context-row context-row-wide">
+          <span>구조</span>
+          <p id="structure-summary">-</p>
+        </div>
+      </section>
+
+      <section class="transfer-history" aria-label="최근 전달 기록">
+        <div class="section-heading history-heading">
+          <div>
+            <p class="eyebrow">RECENT TRANSFERS</p>
+            <h2>최근 전달 기록 <span id="history-count">0</span></h2>
+          </div>
+          <button class="text-button" id="clear-history" type="button" disabled>전체 삭제</button>
+        </div>
+        <p class="history-empty" id="history-empty">아직 쓰끼마로 전달한 기록이 없습니다.</p>
+        <div class="history-list" id="history-list" role="list" aria-label="최근 쓰끼마 전달 기록"></div>
+      </section>
+
+      <div class="actions">
+        <button class="primary" id="read-page" type="button">현재 페이지 읽기</button>
+        <button id="send-to-skkima" type="button" disabled>Skkima로 보내기</button>
+        <button id="copy-context" type="button" disabled>JSON 복사</button>
+      </div>
+
+      <details class="advanced-settings">
+        <summary>연결 설정</summary>
+        <label class="endpoint-field">
+          <span>Skkima 로컬 주소</span>
+          <input id="endpoint" type="url" value="http://127.0.0.1:3217" />
+        </label>
+        <label class="check-row">
+          <input id="include-body" type="checkbox" />
+          <span>본문 요약을 함께 전송</span>
+        </label>
+      </details>
+
+      <p class="result" id="result" role="status">현재 페이지를 읽으면 전송할 수 있습니다.</p>
+    </main>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

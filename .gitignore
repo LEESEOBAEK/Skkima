@@ -9,9 +9,24 @@ node_modules/
 target/
 dist/
 .output/
+apps/*/artifacts/
 
 # Local project and workflow data
 .schema-workflow/
 outputs/
 runtime/
 *.log
+
+# Python and validation artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+tests/artifacts/**
+!tests/artifacts/
+!tests/artifacts/README.md
+experiments/
+deliverables/
+working/
+work/

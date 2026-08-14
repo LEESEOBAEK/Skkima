@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "id": "workflow_001_basic_ambiguous",
+      "text": "파이썬으로 자동화 구현을 하고 싶은데 어떤식으로 접근해야할지 모르겠어",
+      "source_files": [],
+      "expected_initial_state": "input_analysis_required",
+      "expected_initial_next_type": "fill_input_analysis",
+      "expected_c_enabled": false,
+      "expected_warning_codes": ["INPUT_ANALYSIS_NOT_FILLED"]
+    },
+    {
+      "id": "workflow_002_attachment_spreadsheet",
+      "text": "첨부한 sales.xlsx를 읽어서 월별 매출 합계를 계산하는 파이썬 자동화를 만들고 싶어",
+      "source_files": ["sales.xlsx"],
+      "expected_initial_state": "input_analysis_required",
+      "expected_initial_next_type": "fill_input_analysis",
+      "expected_c_enabled": true,
+      "expected_triggers": ["attachment_present"],
+      "expected_warning_codes": ["INPUT_ANALYSIS_NOT_FILLED"],
+      "run_lifecycle": true
+    },
+    {
+      "id": "workflow_003_codex_pet_continuation",
+      "text": "한 장의 이미지에 왼쪽부터 A~E 슬라임 후보 5개가 있어. 선택한 후보를 수정하거나 단독 이미지와 Codex pet으로 이어서 만들고 싶어.",
+      "source_files": [],
+      "expected_initial_state": "input_analysis_required",
+      "expected_initial_next_type": "fill_input_analysis",
+      "expected_c_enabled": false,
+      "expected_warning_codes": ["INPUT_ANALYSIS_NOT_FILLED"],
+      "continuation_fixture": {
+        "artifact_id": "slime_candidate_sheet",
+        "current_phase": "candidate_review",
+        "candidate_count": 5,
+        "index_order": "left_to_right",
+        "candidate_labels": ["A", "B", "C", "D", "E"],
+        "next_actions": [
+          "revise_candidate",
+          "generate_standalone_image",
+          "build_codex_pet"
+        ],
+        "numeric_selector": "3번",
+        "expected_numeric_candidate": "C",
+        "label_selector": "B 후보",
+        "expected_label_candidate": "B"
+      }
+    },
+    {
+      "id": "workflow_004_codex_pet_deployment_scope",
+      "text": "슬라임 후보를 선택해 Codex pet으로 만들고, 사용자 승인 후 기존 pet 위치에 안전하게 적용하고 싶어.",
+      "source_files": [],
+      "expected_initial_state": "input_analysis_required",
+      "expected_initial_next_type": "fill_input_analysis",
+      "expected_c_enabled": false,
+      "expected_warning_codes": ["INPUT_ANALYSIS_NOT_FILLED"],
+      "continuation_fixture": {
+        "artifact_id": "deployable_slime_candidate_sheet",
+        "current_phase": "candidate_review",
+        "candidate_count": 5,
+        "index_order": "left_to_right",
+        "candidate_labels": ["A", "B", "C", "D", "E"],
+        "next_actions": [
+          "revise_candidate",
+          "generate_standalone_image",
+          "build_codex_pet"
+        ],
+        "numeric_selector": "3번",
+        "expected_numeric_candidate": "C",
+        "label_selector": "D 후보",
+        "expected_label_candidate": "D",
+        "completion_gate": "deployed",
+        "risk_level": "high",
+        "deployment_target": "C:\\test-target\\codex-pet"
+      }
+    }
+  ]
+}

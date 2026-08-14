@@ -1,0 +1,501 @@
+{
+  "cases": [
+    {
+      "id": "valid_001_low_risk_proceed",
+      "category": "valid_low_risk",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.88,
+        "reason": "Low-risk automation request has enough object, intent, and output basis.",
+        "evidence": "automation target and code output are known"
+      }
+    },
+    {
+      "id": "valid_002_ambiguous_ask_user",
+      "category": "valid_clarification",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": {"value": "unresolved", "basis": "unknown", "confidence": 0.0},
+        "user_intent": "structure",
+        "needed_output": {"value": "unresolved", "basis": "unknown", "confidence": 0.0},
+        "risk_level": "medium"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "ask_user",
+        "route_confidence": 0.82,
+        "reason": "The problem object and desired output are not clear enough.",
+        "evidence": "missing object and output basis"
+      },
+      "missing_decision_basis": [
+        {"facet": "problem_object", "reason": "Target is missing"},
+        {"facet": "needed_output", "reason": "Output is missing"}
+      ]
+    },
+    {
+      "id": "valid_003_high_risk_risk_review",
+      "category": "valid_high_risk",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": "contract",
+        "user_intent": "review",
+        "needed_output": "checklist",
+        "risk_level": "high"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "risk_review",
+        "route_confidence": 0.9,
+        "reason": "High-risk contract review should go through risk review.",
+        "evidence": "contract and high risk are identified"
+      },
+      "reference_lenses": ["risk_matrix"]
+    },
+    {
+      "id": "valid_004_high_risk_framework",
+      "category": "valid_high_risk",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": "contract",
+        "user_intent": "review",
+        "needed_output": "report",
+        "risk_level": "high"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "run_framework_check",
+        "route_confidence": 0.86,
+        "reason": "High-risk document needs framework check before solution.",
+        "evidence": "contract review requires risk and assumption checks"
+      },
+      "reference_lenses": ["risk_matrix", "mece"]
+    },
+    {
+      "id": "valid_005_c_active_source_type_filled",
+      "category": "valid_c_activation",
+      "expected_valid": true,
+      "c_activation": {
+        "enabled": true,
+        "activated_facets": ["source_type"],
+        "inactive_facets": ["urgency_level"],
+        "triggered_by": ["attachment_present"]
+      },
+      "facets": {
+        "problem_object": "spreadsheet",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low",
+        "source_type": "spreadsheet_file"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.85,
+        "reason": "Spreadsheet automation is low risk and source type is clear.",
+        "evidence": "source_type is activated and filled"
+      }
+    },
+    {
+      "id": "valid_006_urgent_log_framework",
+      "category": "valid_c_activation",
+      "expected_valid": true,
+      "c_activation": {
+        "enabled": true,
+        "activated_facets": ["source_type", "urgency_level"],
+        "inactive_facets": [],
+        "triggered_by": ["log_present", "urgency_signal_present"]
+      },
+      "facets": {
+        "problem_object": "server_error",
+        "user_intent": "debug",
+        "needed_output": "diagnosis",
+        "risk_level": "medium",
+        "source_type": "log_text",
+        "urgency_level": "high"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "run_framework_check",
+        "route_confidence": 0.83,
+        "reason": "Urgent log issue should be checked before solution.",
+        "evidence": "log and urgency facets are active"
+      },
+      "reference_lenses": ["issue_tree"]
+    },
+    {
+      "id": "valid_007_use_ipo_with_lens",
+      "category": "valid_framework_route",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": "data_pipeline",
+        "user_intent": "structure",
+        "needed_output": "process_design",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "use_ipo",
+        "route_confidence": 0.78,
+        "reason": "Input-process-output modeling fits the request.",
+        "evidence": "process structure is the needed output"
+      },
+      "reference_lenses": ["ipo"]
+    },
+    {
+      "id": "valid_008_unresolved_status",
+      "category": "valid_unresolved",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": {"value": "unresolved", "basis": "unknown", "confidence": 0.0},
+        "user_intent": {"value": "unresolved", "basis": "unknown", "confidence": 0.0},
+        "needed_output": {"value": "unresolved", "basis": "unknown", "confidence": 0.0},
+        "risk_level": "unknown"
+      },
+      "route_decision": {
+        "route_status": "unresolved",
+        "selected_route": "",
+        "route_confidence": 0.35,
+        "reason": "The router cannot select one route with the available evidence.",
+        "evidence": "object, intent, and output are unresolved"
+      },
+      "missing_decision_basis": [
+        {"facet": "problem_object", "reason": "Not enough evidence"},
+        {"facet": "user_intent", "reason": "Not enough evidence"}
+      ]
+    },
+    {
+      "id": "valid_009_high_risk_ask_user",
+      "category": "valid_high_risk",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": "privacy_data",
+        "user_intent": "process",
+        "needed_output": {"value": "unresolved", "basis": "unknown", "confidence": 0.0},
+        "risk_level": "high"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "ask_user",
+        "route_confidence": 0.8,
+        "reason": "High-risk data request needs missing output and scope before proceeding.",
+        "evidence": "privacy data and unresolved output"
+      },
+      "missing_decision_basis": [
+        {"facet": "needed_output", "reason": "Output is unresolved"}
+      ]
+    },
+    {
+      "id": "valid_010_situation_map_low_risk",
+      "category": "valid_router_route",
+      "expected_valid": true,
+      "facets": {
+        "problem_object": "work_situation",
+        "user_intent": "classify",
+        "needed_output": "exploration_map",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "use_situation_map",
+        "route_confidence": 0.77,
+        "reason": "Situation exploration is useful and low risk.",
+        "evidence": "work situation classification is requested"
+      },
+      "reference_lenses": ["mandalart"]
+    },
+    {
+      "id": "invalid_011_high_risk_proceed",
+      "category": "invalid_high_risk",
+      "expected_valid": false,
+      "expected_codes": ["HIGH_RISK_DIRECT_PROCEED_FORBIDDEN", "HIGH_RISK_ROUTE_NOT_SAFE"],
+      "facets": {
+        "problem_object": "contract",
+        "user_intent": "review",
+        "needed_output": "solution",
+        "risk_level": "high"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.91,
+        "reason": "Proceeding directly.",
+        "evidence": "contract"
+      }
+    },
+    {
+      "id": "invalid_012_problem_object_unresolved_proceed",
+      "category": "invalid_missing_basis",
+      "expected_valid": false,
+      "expected_codes": ["PROBLEM_OBJECT_UNRESOLVED_ROUTE"],
+      "facets": {
+        "problem_object": {"value": "unknown", "basis": "unknown", "confidence": 0.0},
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.86,
+        "reason": "Proceeding.",
+        "evidence": "intent is known"
+      }
+    },
+    {
+      "id": "invalid_013_user_intent_unresolved_framework",
+      "category": "invalid_missing_basis",
+      "expected_valid": false,
+      "expected_codes": ["USER_INTENT_UNRESOLVED_ROUTE"],
+      "facets": {
+        "problem_object": "document",
+        "user_intent": {"value": "unknown", "basis": "unknown", "confidence": 0.0},
+        "needed_output": "report",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "run_framework_check",
+        "route_confidence": 0.75,
+        "reason": "Run framework.",
+        "evidence": "document exists"
+      }
+    },
+    {
+      "id": "invalid_014_needed_output_unresolved_proceed",
+      "category": "invalid_missing_basis",
+      "expected_valid": false,
+      "expected_codes": ["NEEDED_OUTPUT_UNRESOLVED_PROCEED"],
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": {"value": "unknown", "basis": "unknown", "confidence": 0.0},
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.82,
+        "reason": "Proceed.",
+        "evidence": "automation intent"
+      }
+    },
+    {
+      "id": "invalid_015_unknown_route",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["UNKNOWN_ROUTE"],
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_code",
+        "route_confidence": 0.8,
+        "reason": "Use code route.",
+        "evidence": "code output"
+      }
+    },
+    {
+      "id": "invalid_016_low_confidence_selected",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["ROUTE_CONFIDENCE_TOO_LOW"],
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.4,
+        "reason": "Low confidence route.",
+        "evidence": "weak evidence"
+      }
+    },
+    {
+      "id": "invalid_017_missing_reason_evidence",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["ROUTE_REASON_REQUIRED", "ROUTE_EVIDENCE_REQUIRED"],
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.8,
+        "reason": "",
+        "evidence": ""
+      }
+    },
+    {
+      "id": "invalid_018_route_alternatives",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["ROUTE_ALTERNATIVES_FORBIDDEN"],
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.8,
+        "reason": "Proceed.",
+        "evidence": "known output"
+      },
+      "extra_route_fields": {
+        "alternative_routes": ["ask_user", "run_framework_check"]
+      }
+    },
+    {
+      "id": "invalid_019_inactive_c_facet_filled",
+      "category": "invalid_c_activation",
+      "expected_valid": false,
+      "expected_codes": ["INACTIVE_C_FACET_FILLED"],
+      "c_activation": {
+        "enabled": false,
+        "activated_facets": [],
+        "inactive_facets": ["source_type", "urgency_level"],
+        "triggered_by": []
+      },
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low",
+        "source_type": "natural_language"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.84,
+        "reason": "Proceed.",
+        "evidence": "low risk"
+      }
+    },
+    {
+      "id": "invalid_020_active_c_facet_missing",
+      "category": "invalid_c_activation",
+      "expected_valid": false,
+      "expected_codes": ["ACTIVATED_C_FACET_NOT_FILLED"],
+      "c_activation": {
+        "enabled": true,
+        "activated_facets": ["source_type"],
+        "inactive_facets": ["urgency_level"],
+        "triggered_by": ["attachment_present"]
+      },
+      "facets": {
+        "problem_object": "spreadsheet",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.82,
+        "reason": "Proceed.",
+        "evidence": "spreadsheet automation"
+      }
+    },
+    {
+      "id": "invalid_021_ask_user_without_missing_basis",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["MISSING_DECISION_BASIS_REQUIRED"],
+      "facets": {
+        "problem_object": {"value": "unknown", "basis": "unknown", "confidence": 0.0},
+        "user_intent": "structure",
+        "needed_output": "question",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "ask_user",
+        "route_confidence": 0.8,
+        "reason": "Ask user.",
+        "evidence": "missing object"
+      }
+    },
+    {
+      "id": "invalid_022_unresolved_with_selected_route",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["UNRESOLVED_ROUTE_MUST_NOT_SELECT_ROUTE"],
+      "facets": {
+        "problem_object": "unknown",
+        "user_intent": "unknown",
+        "needed_output": "unknown",
+        "risk_level": "unknown"
+      },
+      "route_decision": {
+        "route_status": "unresolved",
+        "selected_route": "ask_user",
+        "route_confidence": 0.3,
+        "reason": "Unresolved.",
+        "evidence": "not enough basis"
+      },
+      "missing_decision_basis": [
+        {"facet": "problem_object", "reason": "Unknown"}
+      ]
+    },
+    {
+      "id": "invalid_023_high_risk_use_ipo",
+      "category": "invalid_high_risk",
+      "expected_valid": false,
+      "expected_codes": ["HIGH_RISK_ROUTE_NOT_SAFE"],
+      "facets": {
+        "problem_object": "contract",
+        "user_intent": "review",
+        "needed_output": "process_design",
+        "risk_level": "high"
+      },
+      "route_decision": {
+        "route_status": "selected",
+        "selected_route": "use_ipo",
+        "route_confidence": 0.78,
+        "reason": "Use IPO.",
+        "evidence": "process design"
+      },
+      "reference_lenses": ["ipo"]
+    },
+    {
+      "id": "invalid_024_invalid_route_status",
+      "category": "invalid_contract",
+      "expected_valid": false,
+      "expected_codes": ["INVALID_ROUTE_STATUS"],
+      "facets": {
+        "problem_object": "automation",
+        "user_intent": "automation",
+        "needed_output": "code",
+        "risk_level": "low"
+      },
+      "route_decision": {
+        "route_status": "maybe",
+        "selected_route": "proceed_to_solution",
+        "route_confidence": 0.8,
+        "reason": "Maybe proceed.",
+        "evidence": "some evidence"
+      }
+    }
+  ]
+}

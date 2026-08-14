@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "쓰끼마 Portfolio",
+  "version": "0.1.8",
+  "identifier": "com.seobaek.skkima.portfolio",
+  "mainBinaryName": "SkkimaPortfolio",
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "쓰끼마 Portfolio",
+        "width": 960,
+        "height": 640,
+        "minWidth": 440,
+        "minHeight": 560,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": false,
+        "backgroundColor": "#f7f7f5"
+      }
+    ]
+  },
+  "bundle": {
+    "shortDescription": "Skkima portfolio research workspace",
+    "longDescription": "쓰끼마 Portfolio는 운영 버전과 분리된 데이터로 포트폴리오 작업을 검증하는 Windows 데스크톱 워크스페이스입니다.",
+    "windows": {
+      "nsis": {
+        "startMenuFolder": "쓰끼마 Portfolio"
+      }
+    }
+  }
+}
