@@ -35,15 +35,19 @@ https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90
 이 저장소는 문서만 보여주는 소개 페이지가 아니라, 포트폴리오 검토를 위한 실행 가능한
 코드 스냅샷을 포함합니다.
 
+![Skkima 공개 코드 범위 구조도](assets/architecture/skkima-public-code-map.svg)
+
+> 구조도는 공개 코드의 개념적 그룹을 보여주며 실제 실행 순서를 의미하지 않습니다. 아래 표에서 각 경로를 직접 확인할 수 있습니다.
+
 | 영역 | 경로 | 확인할 내용 |
 |---|---|---|
-| 데스크톱 UI | `apps/browser-workspace-prototype/src/` | 프로젝트·세션·Run 상태 화면 |
-| Tauri 어댑터 | `apps/browser-workspace-prototype/src-tauri/src/` | Windows 프로세스·파일·권한 경계 |
-| Python 엔진 | `engine/python/workflow/` | CLI 진입점과 Run 실행 |
-| 거버넌스 모듈 | `engine/python/shared/` | Run·artifact·continuation 계약 |
-| 워크플로 계층 | `engine/python/layers/` | 입력 구조화·라우팅·검증·보고 |
-| 계약·샘플 | `contracts/`, `fixtures/` | 스키마와 재현 가능한 테스트 입력 |
-| 검증 | `tests/`, `apps/browser-workspace-prototype/tests/` | 회귀·거버넌스·UI 테스트 |
+| 데스크톱 UI | [`apps/browser-workspace-prototype/src/`](apps/browser-workspace-prototype/src/) | 프로젝트·세션·Run 상태 화면 |
+| Tauri 어댑터 | [`apps/browser-workspace-prototype/src-tauri/src/`](apps/browser-workspace-prototype/src-tauri/src/) | Windows 프로세스·파일·권한 경계 |
+| Python 엔진 | [`engine/python/workflow/`](engine/python/workflow/) | CLI 진입점과 Run 실행 |
+| 워크플로 계층 | [`engine/python/layers/`](engine/python/layers/) | 입력 구조화·라우팅·검증·보고 |
+| 거버넌스 모듈 | [`engine/python/shared/`](engine/python/shared/) | Run·artifact·continuation 계약 |
+| 계약·샘플 | [`contracts/`](contracts/) · [`fixtures/`](fixtures/) | 스키마와 재현 가능한 테스트 입력 |
+| 검증 | [`tests/`](tests/) · [`apps/browser-workspace-prototype/tests/`](apps/browser-workspace-prototype/tests/) | 회귀·거버넌스·UI 테스트 |
 
 ## 로컬 실행
 
