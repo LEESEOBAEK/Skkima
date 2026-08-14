@@ -35,15 +35,52 @@ https://github.com/user-attachments/assets/7ab19579-ec6e-4515-b074-34241dc02a90
 <br />
 <br />
 
-| 영역 | 경로 | 확인할 내용 |
-|:---:|:---:|:---:|
-| 데스크톱 UI | [`apps/browser-workspace-prototype/src/`](apps/browser-workspace-prototype/src/) | 프로젝트·세션·Run 상태 화면 |
-| Tauri 어댑터 | [`apps/browser-workspace-prototype/src-tauri/src/`](apps/browser-workspace-prototype/src-tauri/src/) | Windows 프로세스·파일·권한 경계 |
-| Python 엔진 | [`engine/python/workflow/`](engine/python/workflow/) | CLI 진입점과 Run 실행 |
-| 워크플로 계층 | [`engine/python/layers/`](engine/python/layers/) | 입력 구조화·라우팅·검증·보고 |
-| 거버넌스 모듈 | [`engine/python/shared/`](engine/python/shared/) | Run·artifact·continuation 계약 |
-| 계약·샘플 | [`contracts/`](contracts/) · [`fixtures/`](fixtures/) | 스키마와 재현 가능한 테스트 입력 |
-| 검증 | [`tests/`](tests/) · [`apps/browser-workspace-prototype/tests/`](apps/browser-workspace-prototype/tests/) | 회귀·거버넌스·UI 테스트 |
+<table align="center" width="93%">
+  <thead>
+    <tr>
+      <th align="center">영역</th>
+      <th align="center">경로</th>
+      <th align="center">확인할 내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">데스크톱 UI</td>
+      <td align="center"><a href="apps/browser-workspace-prototype/src/">apps/browser-workspace-prototype/src/</a></td>
+      <td align="center">프로젝트·세션·Run 상태 화면</td>
+    </tr>
+    <tr>
+      <td align="center">Tauri 어댑터</td>
+      <td align="center"><a href="apps/browser-workspace-prototype/src-tauri/src/">apps/browser-workspace-prototype/src-tauri/src/</a></td>
+      <td align="center">Windows 프로세스·파일·권한 경계</td>
+    </tr>
+    <tr>
+      <td align="center">Python 엔진</td>
+      <td align="center"><a href="engine/python/workflow/">engine/python/workflow/</a></td>
+      <td align="center">CLI 진입점과 Run 실행</td>
+    </tr>
+    <tr>
+      <td align="center">워크플로 계층</td>
+      <td align="center"><a href="engine/python/layers/">engine/python/layers/</a></td>
+      <td align="center">입력 구조화·라우팅·검증·보고</td>
+    </tr>
+    <tr>
+      <td align="center">거버넌스 모듈</td>
+      <td align="center"><a href="engine/python/shared/">engine/python/shared/</a></td>
+      <td align="center">Run·artifact·continuation 계약</td>
+    </tr>
+    <tr>
+      <td align="center">계약·샘플</td>
+      <td align="center"><a href="contracts/">contracts/</a> · <a href="fixtures/">fixtures/</a></td>
+      <td align="center">스키마와 재현 가능한 테스트 입력</td>
+    </tr>
+    <tr>
+      <td align="center">검증</td>
+      <td align="center"><a href="tests/">tests/</a> · <a href="apps/browser-workspace-prototype/tests/">apps/browser-workspace-prototype/tests/</a></td>
+      <td align="center">회귀·거버넌스·UI 테스트</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 로컬 실행
 
