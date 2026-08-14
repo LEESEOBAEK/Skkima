@@ -19,8 +19,8 @@
     </style>
   </defs>
 
-  <rect width="1200" height="1320" fill="#0d1018"/>
-  <rect x="40" y="40" width="1120" height="1240" rx="28" fill="#171b27" stroke="#2b3142" stroke-width="2" filter="url(#shadow)"/>
+  <rect width="1200" height="1320" fill="none"/>
+  <rect x="40" y="40" width="1120" height="1240" rx="28" fill="#171b27" fill-opacity="0.98" stroke="#2b3142" stroke-width="2" filter="url(#shadow)"/>
 
   <text x="90" y="112" class="title">Skkima Public Code Scope</text>
   <text x="90" y="147" class="subtitle">A readable map of the files included in this public preview.</text>
